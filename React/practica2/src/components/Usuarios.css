@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.ListaDinUsuarios {
+  margin: 10px;
+  background-color: orange;
+  border: 5px solid black;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.ListaEstatica {
+  list-style-type: none;
+}

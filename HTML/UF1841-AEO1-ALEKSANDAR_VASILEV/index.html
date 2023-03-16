@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Evaluación 1</title>
+</head>
+<body>
+    <header id="inicio">       
+        <h1><img src="./imagenes/logo.jpg" alt="logo silver star" width="150"> Concesionario Silver Star</h1>
+        <h3>Venta de vehículos de última generación</h3>
+    </header>
+    <nav>
+        <a href="#fotos">Fotos</a>
+        <a href="#listado">Listado</a>
+        <a href="#altas">Altas</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+    <br>
+    <main>
+          <!-- Fotos -->
+
+        <section id="fotos">
+          <a href="https://www.alfaromeo.es/modelos/giulia"><img src="https://www.media.stellantis.com/cache/2/3/7/9/0/23790855ff401e6bc944bdaafd40c71faad51a20.jpeg" alt="Alfa Romeo Giulia" width="200">
+          </a>
+
+          <a href="https://www.audi.es/es/web/es/modelos/a4/a4.html"><img src="https://hips.hearstapps.com/hmg-prod/images/medium-6802-audia4-1654633069.jpg?crop=1.00xw:0.846xh;0,0.154xh&resize=1200:*" alt="Audi A4" width="200"></a>
+
+          <a href="https://www.porsche.com/spain/models/911/911-models/carrera/"><img src="https://cdn.motor1.com/images/mgl/ozyv7/s1/4x3/prueba-porsche-911-carrera-t-2018.webp" alt="Porsche 911 Carrera" width="200"></a>
+          <br>
+          <a href="#inicio">Inicio</a>  
+        </section>
+          <!-- Listado -->
+
+        <section id="listado">
+          <h2>Listado de vehículos</h2>
+          <ul>
+            <li> <strong>Audi</strong></li>
+              <ul>
+                <li>A1</li>
+                <li>A4</li>
+                <li>A8</li>
+                <li>TT</li>
+              </ul>
+            <li> <strong>BMW</strong></li>
+              <ul>
+                <li>M3</li>
+                <li>M2</li>
+                <li>Serie 3</li>
+                <li>i8</li>
+              </ul>
+            <li><strong>Porsche</strong></li>
+              <ul>
+                <li>911 Carrera</li>
+                <li>Taycan</li>
+                <li>Boxter</li>
+                <li>Cayenne</li>
+              </ul>
+            <li><strong>Mercedes</strong></li>
+              <ul>
+                <li>Clase A</li>
+                <li>Clase C</li>
+                <li>Clase S</li>
+                <li>AMG</li>
+              </ul>
+          </ul>
+          <a href="#inicio">Inicio</a> 
+        </section>
+          <!-- Formulario Altas -->
+
+        <section id="altas">
+          <h2>Formulario de altas</h2>
+          <form action="https://www.silverstar.com/altas/api/v1" method="post">
+          <div>
+            <label for="marca">Seleccione marca:</label>
+            <select name="marca" id="marca" required>
+              <option value="--">----</option>
+              <option value="Mercedes"> <em> Mercedes</em></option>
+              <option value="Audi"><em> Audi</em></option>
+              <option value="Porsche"><em> Porsche</em></option>
+              <option value="BMW"><em> BMW</em></option>
+            </select>
+          </div>
+          <br>
+          <div>
+            <label for="modelo">Escriba modelo:</label>
+            <input type="text" name="modelo" id="modelo">
+          </div>
+          <br>
+          <div>
+            <label for="fechaalta">Fecha de alta:</label>
+            <input type="date" name="fechaalta" id="fechaalta">
+          </div>
+          <br>
+          <div>
+            <label for="nuevo">Coches nuevos solamente</label>
+            <input type="checkbox" name="nuevo" id="nuevo">
+          </div>
+          <br>
+          <div>
+            <label for="precios">Rango de precios (50 000€ - 1 000 000€)</label>
+            <input type="range" name="precios" id="precios" max="1000000" min="50000" value="200000" required>
+          </div>
+          <br>
+          <div>
+            <button type="submit">Enviar</button>
+            <button type="reset">Borrar datos</button>
+          </div>
+          <br>
+          <a href="#inicio">Inicio</a>
+          </form>
+        </section>
+    </main>
+            <!-- Contacto -->
+    <footer id="contacto">  
+      <h1>Contacto</h1>
+      <p>Copyright Silver Star Motors - Calle León y Castillo , 43</p>
+      <p>35324 - Las Palmas de Gran Canaria</p>
+      <a href="mailto: silverstar@gmail.com">Email</a>
+      <br>
+      <a href="tel:623-456-7890">Móvil</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.contenedor {
+  text-align: center;
+  font-size: 16px;
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-rows: 10% 75% 7% 8%;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  padding: 20px;
+  justify-content: center;
+}
+ul a {
+  padding: 30px;
+
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+ul a:hover {
+  color: rgb(85, 38, 4);
+  text-decoration: underline;
+  transition: 0.5s;
+}
+.menu {
+  background-color: beige;
+  grid-row: 1/2;
+}
+
+.main {
+  background-color: lightcyan;
+  grid-row: 2/3;
+  background: url(./imagenes/backgroundman.jpg) no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.color {
+  width: 100%;
+  background: beige, 0.7;
+  overflow: hidden;
+  height: 100%;
+  z-index: 2;
+}
+.content {
+  position: absolute;
+  top: 24%;
+  right: 25%;
+}
+.footer {
+  background-color: rgb(85, 38, 4);
+  grid-row: 3/4;
+  font-size: 2rem;
+  color: beige;
+}
+.footer_menu {
+  background-color: rgb(85, 38, 4);
+  grid-row: 4/5;
+}
+.footer_menu ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+.footer_menu ul a {
+  padding: 20px;
+  color: beige;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.footer_menu ul a:hover {
+  color: cyan;
+  text-decoration: underline;
+  transition: 3s;
+}
+h1 {
+  font-weight: 400;
+  font-size: 4rem;
+  color: beige;
+  position: relative;
+  top: 10%;
+}
+p {
+  font-size: 2rem;
+  color: rgb(50, 23, 3);
+  font-weight: 700;
+  position: relative;
+  top: 10%;
+}

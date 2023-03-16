@@ -1,0 +1,54 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    font-weight: bold;
+    color: blanchedalmond;
+    width: 90%;
+    height: 100vh;
+    margin: 0 auto;
+    border: 1px solid #003049;
+    background-color: #003049;
+    display: flex;
+    flex-direction: row; /* puede ser sobre el eje principal (row) o sobre el cruzado o vertical (column) */
+    justify-content:center; /* alinemamiento horizontal */
+    align-items:stretch; /* alineamiento vertical */
+    flex-wrap: nowrap; /* permite (o no) que los elementos que vayan a sobrepasar el ancho del contenedor se coloquen en la siguiente fila */
+}
+
+.caja1 {
+    flex-basis: 500px; /* similar a la propiedad width */
+    height: 200px;
+    background-color: blueviolet;
+  }
+  
+  .caja2 {
+    width: 400px;
+    height: 200px;
+    background-color: chocolate;
+    /* flex-grow: 1; */
+  }
+  
+  .caja3 {
+    width: 400px;
+    height: 200px;
+    background-color: aquamarine;
+    /* flex-grow: 1; */
+  }
+  
+  .caja4 {
+    width: 1000px;
+    height: 200px;
+    background-color: rgb(8, 0, 255);
+  }
+  
+  .caja5 {
+    width: 600px;
+    height: 200px;
+    background-color: rgb(143, 58, 77);
+    flex-shrink: 1;
+  }

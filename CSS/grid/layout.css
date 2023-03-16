@@ -1,0 +1,43 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.contenedor {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    display: grid;
+    width: 1300px;
+    height: 80vh;
+    grid-template-columns: 10% 30% 30% 30%;;
+    grid-template-rows: 50px 400px 50px;
+    /* row-gap: 20px;
+    column-gap: 20px; */
+    /* gap:10px; */
+}
+
+.elemento1 {
+    background: lightskyblue;
+    grid-column: 1/-1;
+    
+}
+
+.elemento2 {
+    background: olive;
+    height: 74vh;
+    
+}
+
+.elemento3 {
+    /* height:; */
+    background: red;
+    grid-column:2/-1;
+}
+
+.elemento4 {
+    background: gold;
+    grid-column: 2/-1;
+    grid-row:3/-1;
+}

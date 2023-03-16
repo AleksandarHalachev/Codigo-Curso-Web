@@ -1,0 +1,50 @@
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  /* 1rem = 16px. Con lo cual 62.5% de 1rem = 10px*/
+  /* 62.5% de 16px = 10px */
+  /* font-size: 62.5%; */
+}
+
+.caja1 {
+  /* background-color: darkgoldenrod; */
+  /* Imagen de fondo */
+  /* background: url(playa.jpg); */
+  /* Gradiente de color */
+  /* background: linear-gradient(red, blue); */
+  background: radial-gradient(red, blue);
+  background-size: cover;
+  /* background-position: 25px 50px; */
+  /* px, rem, porcentaje, vw, vh, fr, em  */
+  width: 400px;
+  height: 200px;
+  /* border-right: 20px;
+  border-top: 10px;
+  border-style: solid;
+  border-color: blueviolet;
+  border-radius: 10px */
+  border: 5px solid rgb(252, 4, 4); /* ancho, tipo y color del borde */
+  margin-bottom: 5px;
+  /* margin: auto; */
+  text-align: justify;
+  padding: 10px;
+}
+
+.caja2 {
+  background-color: rgb(155, 86, 86);
+  /* px, rem, porcentaje, vw, vh, fr, em  */
+  width: 400px;
+  height: 200px;
+  border: 5px solid rgb(4, 58, 114); /* ancho, tipo y color del borde */
+  margin: auto;
+  text-align: justify;
+  padding: 10px 5px; /* arriba y abajo: 10px. Dercha e izquierda: 5px */
+  line-height: 1.5rem;
+}

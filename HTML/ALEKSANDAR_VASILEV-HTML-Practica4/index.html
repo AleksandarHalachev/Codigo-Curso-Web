@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+</head>
+<body>
+  <!-- Ejercicio 1 -->
+    <h1>Formulario Ejercicio 1</h1>
+    <form action="http://www.gofit.com/inscripcion/api/v1" method="post">
+      <div>
+        <label for="nombre">Nombre</label>
+        <input
+          type="text"
+          name="nombre"
+          id="nombre"
+          placeholder="Su nombre aquí"
+        />
+      </div>
+      <br />
+    
+        <label for="apellidos">Apellidos</label>
+        <input
+          type="text"
+          name="apellidos"
+          id="apellidos"
+          placeholder="Sus apellidos aquí"
+        />
+      </form>
+
+      <!-- Ejercicio 2 -->
+      <h1>Ejercicio 2</h1>
+      <form action="http://www.gofit.com/inscripcion/api/v1" method="">
+        <div>
+          <label for="nombre">Introduzca su nombre:</label>
+          <input type="text" name="nombre" id="nombre" placeholder="nombre">
+        </div> 
+        <br>
+        <div>
+          <label for="email">Introduzca su email:</label>
+          <input type="email" name="email" id="email" placeholder="email">
+        </div>
+        <br>
+        <div>
+          <label for="password">Introduzca su contraseña</label>
+          <input type="password" name="password" id="password" placeholder="contraseña">
+        </div>
+        <br>
+        <div>
+          <input type="button" value="enviar"> 
+        </div>
+      </form>
+
+      <!-- Ejercicio 3 -->
+      <h1>Ejercicio 3</h1>
+      <form action="http://www.gofit.com/inscripcion/api/v1" method="">
+        <div>
+          <label for="nombre">Introduzca su nombre</label>
+          <input type="text" name="nombre" id="nombre" placeholder="nombre">
+        </div>
+        <br>
+        <div>
+          <label for="apellidos">Introduzca sus apellidos</label>
+          <input type="text" name="apellidos" id="apellidos" placeholder="apellidos">
+        </div>
+        <br>
+        <div>
+          <label for="cod_postal">Seleccione código postal:</label>
+          <select name="cod_postal" id="cod_postal">
+            <option value="-----"></option>
+            <option value="35678">35678</option>
+            <option value="35435" selected>35435</option>
+            <option value="34636">34636</option>
+            <option value="35743">35743</option>
+          </select>
+        </div>
+        <br>
+        <div>
+          <label for="notificaciones">¿Desea recibir notificaciones?</label>
+          <input type="checkbox" name="notificaciones" id="notificaciones" checked>
+        </div>
+        <br>
+        <div>
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+
+      <!-- Ejercicio 4 -->
+      <h1>Ejercicio 4</h1>
+      <form action="http://www.gofit.com/inscripcion/api/v1" method="">
+        <div>
+          <label for="asunto">Asunto*:</label>
+          <select name="asunto" id="asunto" required>
+            <option value="-----"></option>
+            <option value="inscipción">inscripcion</option>
+            <option value="baja">baja</option>
+            <option value="consulta">consulta</option>
+            <option value="otro">otro</option>
+          </select>
+        </div>
+        <br>
+        <div>
+        <label for="dni">DNI/NIE*:</label>
+        <input type="number" name="dni" id="dni" required>
+        </div>
+        <br>
+        <div>
+          <label for="nombre">Introduzca su nombre:*</label>
+          <input type="text" name="nombre" id="nombre" placeholder="nombre" required>
+        </div>
+        <br>
+        <div>
+          <label for="apellido1">Introduzca primer apellido:*</label>
+          <input type="text" name="apellido1" id="apellido1" placeholder="apellido1" required>
+        </div>
+        <br>
+        <div>
+          <label for="apellido2">Introduzca segundo apellido:</label>
+          <input type="text" name="apellido2" id="apellido2" placeholder="apellido2">
+        </div>
+        <br>
+        <div>
+          <label for="nacimiento">Fecha de nacimiento:</label>
+          <input type="date" name="nacimiento" id="nacimiento" required>
+        </div>
+        <br>
+        <div>
+          <label for="tlf">Teléfono de contacto:*</label>
+          <input type="number" name="tlf" id="tlf" required>
+        </div>
+        <br>
+        <div>
+          <label for="email">Correo electrónico (para respuesta)</label>
+          <input type="email" name="email" id="email">
+        </div>
+        <br>
+        <div>
+          <label for="domicilio">Domicilio:*</label>
+          <input type="text" name="domicilio" id="domicilio" required>
+        </div>
+      <br>
+      <div>
+        <label for="cod_postal">Código postal*:</label>
+        <input type="number" name="cod_postal" id="cod_postal" required>
+      </div>
+      <br>
+      <div>
+        <label for="municipio">Municipio*:</label>
+        <select name="municipio" id="municipio" required>
+          <option value="-----"></option>
+          <option value="laspalmas">las palmas</option>
+          <option value="santabrigida">santa brigida</option>
+          <option value="dsgsdf">otro</option>
+          <option value="dsfsdf">otro2</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="oficina">Oficina*:</label>
+        <select name="oficina" id="oficina" required>
+          <option value="-----"></option>
+          <option value="oficina1">oficina1</option>
+          <option value="oficina2">oficina2</option>
+          <option value="oficina3">oficina3</option>
+          <option value="oficina4">oficina4</option>
+        </select>
+      </div>
+      <br>
+      <div>
+        <label for="info">Información requerida:*</label>
+        <br>
+        <textarea name="info" id="info" cols="80" rows="20" maxlength="2000" required></textarea>
+      </div>
+      <br>
+      <button type="submit">enviar</button>
+    </form>
+
+    <!-- Ejercicio 5 -->
+    <h1>Ejercicio5</h1>
+    <form action="https//:www.ticketmaster.com" method="post">
+      <div>
+        <label for="nombre">Introduzca su nombre:*</label>
+        <input type="text" name="nombre" id="nombre" placeholder="nombre" required>
+      </div>
+      <br>
+      <div>
+        <label for="apellido1">Introduzca primer apellido:*</label>
+        <input type="text" name="apellido1" id="apellido1" placeholder="apellido1" required>
+      </div>
+      <br>
+      <div>
+        <label for="apellido2">Introduzca segundo apellido:</label>
+        <input type="text" name="apellido2" id="apellido2" placeholder="apellido2">
+      </div>
+      <br>
+      <div>
+        <label for="notificaciones">¿Desea recibir notificaciones?</label>
+        <input type="checkbox" name="notificaciones" id="notificaciones" checked>
+      </div>
+      <br>
+      <div>
+        <label for="condiciones">Aceptar términos y condiciones</label>
+        <input type="checkbox" name="condiciones" id="condiciones" required>
+      </div>
+      <br>
+      <h3>Tipo de entrada que desea comprar:</h3>
+      <br>
+      <div>
+        <label for="entradadia1">Dia 1</label>
+        <input type="radio" name="entradadia1" id="entradadia1">
+      </div>
+      <br>
+      <div>
+        <label for="entradadia2">Dia 2</label>
+        <input type="radio" name="entradadia2" id="entradadia2">
+      </div>
+      <br>
+      <div>
+        <label for="entradadia1">Dia 2</label>
+        <input type="radio" name="entradadia1" id="entradadia1">
+      </div>
+      <br>
+      <div>
+        <label for="entradadiacompleta">Todo el festival</label>
+        <input type="radio" name="entradadiacompleta" id="entradadiacompleta">
+      </div>
+      <br>
+      <div>
+        <label for="grupo">¿Qué grupos te gustaría ver?</label>
+        <input type="text" list="grupos" name="grupo" id="grupo" >
+        <datalist id="grupos">
+          <option value="Iron Maiden"></option>
+          <option value="Metallica"></option>
+          <option value="Muse"></option>
+          <option value="Judas Priest"></option>
+        </datalist>
+      </div>
+      <br>
+      <div>
+        <label for="info">Requisitos adicionales:</label>
+        <br>
+        <textarea name="info" id="info" cols="80" rows="20" maxlength="2000"></textarea>
+      </div>
+      <br>
+      <div>
+        <button type="reset">Borrar</button>
+        <br> <br>
+        <button type="submit">Enviar</button>
+      </div>
+      <br><br>
+    </form>
+
+</body>
+</html>

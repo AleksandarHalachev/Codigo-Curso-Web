@@ -1,0 +1,58 @@
+/* Ejercicio 1 */
+.cursive{
+    font-weight:lighter;
+    font-style: italic;
+    color: gray;
+    line-height: 5px;
+}
+.light{
+    color: gray;
+    line-height: 5px;
+}
+.purple{
+    background-color: purple;
+    color: white;
+    text-align: center;
+}
+
+/* Ejercicio 2 */
+.greenbg{
+    background-color: green;
+    color: white;
+}
+.azulito{
+    color: aqua;
+}
+.h2gordo{
+    font-weight:900px;
+}
+/* Ejercicio 3 */
+.formulario{
+    background-color: darkgray;
+    color: white;
+    line-height: 40px;
+}
+
+/* Ejercicio 4 */
+.tablita{
+    background-color: lightblue;
+    line-height: 30px;
+     
+}
+.tablitaheader{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    color: darkorange;
+    font-weight:bold;
+      
+}
+.tablitabody{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: medium;
+    border:1px solid black  
+
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }

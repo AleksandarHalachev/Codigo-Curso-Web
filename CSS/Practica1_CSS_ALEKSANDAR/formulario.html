@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form CSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Formulario</h1>
+    <form action="https://www.silverstar.com/altas/api/v1" method="post" class="formulario">
+        <div class="azulito">
+          <label for="marca">Seleccione marca:</label>
+          <select name="marca" id="marca" required>
+            <option value="--">----</option>
+            <option value="Mercedes"> <em> Mercedes</em></option>
+            <option value="Audi"><em> Audi</em></option>
+            <option value="Porsche"><em> Porsche</em></option>
+            <option value="BMW"><em> BMW</em></option>
+          </select>
+        </div>
+        <br>
+        <div>
+          <label for="modelo">Escriba modelo:</label>
+          <input type="text" name="modelo" id="modelo">
+        </div>
+        <br>
+        <div>
+          <label for="fechaalta">Fecha de alta:</label>
+          <input type="date" name="fechaalta" id="fechaalta">
+        </div>
+        <br>
+        <div>
+          <label for="nuevo">Coches nuevos solamente</label>
+          <input type="checkbox" name="nuevo" id="nuevo">
+        </div>
+        <br>
+        <div>
+          <label for="precios">Rango de precios (50 000€ - 1 000 000€)</label>
+          <input type="range" name="precios" id="precios" max="1000000" min="50000" value="200000" required>
+        </div>
+        <br>
+        <div style="text-align: center;">
+          <button type="submit">Enviar</button>
+          <button type="reset">Borrar datos</button>
+        </div>
+        <br>
+        <a href="#inicio">Inicio</a>
+        </form>
+    
+</body>
+</html>

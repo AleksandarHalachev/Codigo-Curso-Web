@@ -1,0 +1,202 @@
+/*Paleta de colores:
+#8AEDC9, #8FF7B4, #8DE092, #ABF78F, #C7ED8A */
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+header {
+  background-color: #8aedc9;
+  height: 100vh;
+  position: relative;
+}
+.title {
+  font-size: 2.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  top: 5%;
+  left: 10%;
+  margin-left: 300px;
+  margin-right: 700px;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  position: absolute;
+  left: 60%;
+  bottom: 93%;
+}
+li {
+  background-color: #8aedc9;
+}
+nav {
+  font-size: 20px;
+}
+li:hover {
+  transform: scale(1.2) translate(-5px, 0px);
+  text-decoration: 5px underline;
+  transition: all 0.5s;
+}
+li a {
+  color: black;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 20px;
+  font-weight: 100;
+}
+.logo {
+  font-family: "Kanit", "serif";
+  position: relative;
+  font-size: 30px;
+  padding: 10px;
+  left: 15%;
+}
+.button {
+  padding: 10px;
+  background-color: black;
+  color: #8de092;
+  position: absolute;
+  top: 30%;
+  left: 44%;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.button:hover {
+  background-color: #c7ed8a;
+  color: black;
+  border-radius: 50%;
+  transition: all 1s;
+}
+.hero_image {
+  position: relative;
+  top: 18%;
+  left: 27%;
+  width: 600px;
+}
+main {
+  background-color: #8de092;
+  height: 70vh;
+  position: relative;
+}
+footer {
+  background: linear-gradient(#c7ed8a, #8ff7b4, #8aedc9);
+  height: 70vh;
+  position: relative;
+}
+.main_image {
+  position: relative;
+  top: 120px;
+  left: 10%;
+  width: 500px;
+}
+section {
+  position: relative;
+}
+.main_title {
+  font-size: 2.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  bottom: 200px;
+  left: 30%;
+  margin-left: 300px;
+  margin-right: 700px;
+}
+.main_button {
+  padding: 10px;
+  background-color: black;
+  color: #8de092;
+  position: absolute;
+  top: 320px;
+  left: 64%;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.main_button:hover {
+  background-color: #c7ed8a;
+  color: black;
+  border-radius: 50%;
+  transition: all 1s;
+}
+.main_text {
+  margin-left: 500px;
+  margin-right: 550px;
+  position: relative;
+  left: 19%;
+  bottom: 150px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.footer_title {
+  font-size: 2.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  left: 30px;
+  top: 30px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+.footer_button {
+  padding: 10px;
+  background-color: black;
+  color: #8de092;
+  position: relative;
+  top: 60px;
+  left: 46%;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.footer_button:hover {
+  background-color: #c7ed8a;
+  color: black;
+  border-radius: 50%;
+  transition: all 1s;
+}
+.footer_lower {
+  background-color: #8ff7b4;
+  position: relative;
+  height: max-content;
+  top: 25%;
+  height: 244px;
+}
+.belton_catering {
+  position: absolute;
+  right: 600px;
+  top: 80px;
+  margin-left: 300px;
+  margin-right: 250px;
+}
+.belton_catering p {
+  padding-top: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 100;
+}
+.contacts {
+  position: relative;
+  left: 500px;
+  top: 80px;
+  margin-left: 400px;
+  margin-right: 200px;
+}
+.contacts h2 {
+  padding-bottom: 20px;
+}
+.contacts a {
+  color: black;
+}
+.contacts a:hover {
+  color: blue;
+}

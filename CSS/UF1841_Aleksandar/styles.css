@@ -1,0 +1,209 @@
+/*Paleta de colores:
+#440794, #8B33FF, #6F16E0, #949100, #E0DC16 */
+@import url("https://fonts.googleapis.com/css2?family=Creepster&display=swap");
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: #e0dc16;
+}
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+header {
+  background-color: #440794;
+  height: 100vh;
+  position: relative;
+}
+.title {
+  font-size: 2.5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  top: 0.5rem;
+  left: 10%;
+  margin-left: 300px;
+  margin-right: 700px;
+}
+ul {
+  display: flex;
+  list-style-type: none;
+  position: absolute;
+  left: 60%;
+  bottom: 93%;
+}
+li {
+  background-color: #440794;
+  border: 1px solid #440794;
+}
+nav {
+  font-size: 20px;
+}
+li:hover {
+  border: 1px solid #e0dc16;
+}
+li a {
+  font-family: "Creepster", "serif";
+  padding: 20px;
+  font-weight: 100;
+  color: #e0dc16;
+  font-size: 1.8rem;
+}
+.logo {
+  font-family: "Creepster", "serif";
+  position: relative;
+  font-size: 50px;
+  padding: 10px;
+  left: 10%;
+  color: #e0dc16;
+}
+.button {
+  padding: 10px;
+  background-color: #e0dc16;
+  color: black;
+  position: absolute;
+  top: 16rem;
+  left: 44%;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.button:hover {
+  background-color: #e0dc16;
+  color: black;
+  border-radius: 50%;
+  transform: rotate(360deg);
+  transition: all 0.3s;
+}
+.hero_image {
+  position: relative;
+  top: 3rem;
+  left: 28.5rem;
+  width: 500px;
+}
+section {
+  background-color: #6f16e0;
+  height: 70vh;
+  position: relative;
+}
+footer {
+  background-color: #440794;
+  height: 70vh;
+  position: relative;
+  color: black;
+}
+.main_image {
+  position: relative;
+  top: 2rem;
+  left: 15rem;
+  width: 300px;
+  height: 300px;
+}
+.main_title {
+  font-size: 2.5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  left: 30%;
+  bottom: 15rem;
+  margin-left: 300px;
+  margin-right: 700px;
+}
+.main_button {
+  padding: 10px;
+  background-color: #e0dc16;
+  color: black;
+  position: absolute;
+  top: 20rem;
+  right: 27rem;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.main_button:hover {
+  background-color: #e0dc16;
+  color: black;
+  border-radius: 50%;
+  transform: rotate(360deg);
+  transition: all 0.3s;
+}
+.main_text {
+  margin-left: 500px;
+  margin-right: 550px;
+  position: relative;
+  left: 19%;
+  bottom: 12rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.footer_title {
+  font-size: 2.5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  left: 25px;
+  top: 30px;
+  margin-left: 300px;
+  margin-right: 300px;
+}
+.footer_button {
+  padding: 10px;
+  background-color: #e0dc16;
+  color: black;
+  position: absolute;
+  top: 9rem;
+  left: 45rem;
+  font-weight: 100;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.footer_button:hover {
+  background-color: #e0dc16;
+  color: black;
+  border-radius: 50%;
+  transform: rotate(360deg);
+  transition: all 0.3s;
+}
+.footer_lower {
+  background-color: #e0dc16;
+  position: relative;
+  top: 10rem;
+  height: 15.5rem;
+}
+.berserk_gaming {
+  position: absolute;
+  right: 600px;
+  top: 80px;
+  margin-left: 300px;
+  margin-right: 250px;
+}
+.berserk_gaming h2 {
+  color: black;
+}
+.berserk_gaming p {
+  padding-top: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 100;
+  color: black;
+}
+.contacts {
+  position: relative;
+  left: 500px;
+  top: 80px;
+  margin-left: 400px;
+  margin-right: 200px;
+}
+.contacts h2 {
+  padding-bottom: 20px;
+  color: black;
+}
+.contacts a {
+  color: black;
+}
+.contacts a:hover {
+  color: blue;
+}

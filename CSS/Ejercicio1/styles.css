@@ -1,0 +1,32 @@
+*{
+  font-size: normal;
+}
+/* Regla CSS */
+section{
+  
+  background-color: beige;
+}
+h1{
+  color: blueviolet;
+}
+p{  
+  text-decoration:underline;
+  text-decoration-style:wavy; 
+  line-height: 27px;
+  font-weight: 500;
+  font-size: normal;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.zona1 {
+  color: chartreuse;
+}
+.zona2{
+  color: darkgoldenrod;
+}
+form{
+  color: yellow;
+}
+button{
+  color:inherit;
+}

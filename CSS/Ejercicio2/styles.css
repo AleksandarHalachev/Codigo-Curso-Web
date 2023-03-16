@@ -1,0 +1,87 @@
+*{
+  background-color:silver;
+  
+}
+h1{
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-style: oblique;
+  color:rgb(255, 4, 4);
+  font-size: 60px;
+  text-align: center;
+}
+h2{
+  font-size: 30;
+  color: black;
+  background-color: silver;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+h3{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 25px;
+  text-align: center;
+}
+.navegar a{
+  color: black;
+  font-size: 30px;
+  text-decoration: none;
+}
+.navegar a:hover{
+  background-color: black;
+  color: silver;
+}
+.inicio{
+
+  color: black;
+  text-decoration: none;
+  font-size: 25px;
+}
+.inicio:hover{
+  background-color: black;
+  color: silver;
+}
+select:hover{
+  background-color: red;
+  color: black
+}
+select:active{
+  background-color: yellow;
+}
+option:first-child{
+  background-color: red;
+  color: black;
+}
+option:last-child{
+  background-color: red;
+  color: black;  
+}
+option:nth-child(3){
+  background-color: red;
+  color: black;
+}
+input[type=text]{
+  width: 20%;
+  background-color: aqua;
+  color: black;
+}
+input[type=text]:hover{
+  background-color: blueviolet;
+  color: azure;
+}
+input[type=date]{
+  width: 20%;
+  background-color: aqua;
+  color: black;
+}
+input[type=date]:hover{
+  background-color: blueviolet;
+  color: azure;
+}
+button{
+  width: 20%;
+  background-color: aqua;
+  color: black;
+}
+button:hover{
+  background-color: blueviolet;
+  color: azure;
+}

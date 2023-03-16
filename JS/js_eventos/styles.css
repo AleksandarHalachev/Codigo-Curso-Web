@@ -1,0 +1,78 @@
+#botYT {
+  margin-bottom: 2rem;
+}
+
+.btnYoutube {
+  background-color: rgb(230, 45, 45);
+  font-family: 'Lato';
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgb(255, 237, 237);
+  border-color: rgba(255, 250, 250, 0);
+  padding: 0.7rem 0.7rem;
+  border-radius: 0.4rem;
+}
+
+.btnYouSuscrito {
+  background-color: grey;
+  font-family: 'Lato';
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: rgb(255, 237, 237);
+  border-color: rgba(255, 250, 250, 0);
+  padding: 0.7rem 0.7rem;
+  border-radius: 0.4rem;
+}
+
+.btnYoutube:hover,
+.btnYouSuscrito:hover {
+  cursor: pointer;
+}
+
+#info {
+  margin-top: 2rem;
+  background-color: lightsteelblue;
+  padding: 0.3rem 0.3rem;
+}
+
+#amp {
+  visibility: hidden;
+  margin-top: 12rem;
+  background-color: rgb(121, 245, 172);
+  padding: 1rem 1rem;
+  font-family: 'Lato';
+  font-size: 1.3rem;
+}
+
+#ej3 {
+  margin-top: 10rem;
+}
+
+.ejercicio4 .cajas {
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+
+}
+
+.ejercicio4 .cajas .caja {
+  background-color: gray;
+  height: 3rem;
+  width: 30%;
+}
+
+#colores {
+  margin: 0 auto;
+  width: 80%;
+  height: 2rem;
+}
+
+#color {
+  margin: 0 auto;
+  width: 80%;
+  height: 2rem;
+}
