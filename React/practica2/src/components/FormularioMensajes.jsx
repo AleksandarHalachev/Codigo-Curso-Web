@@ -51,6 +51,9 @@ const FormularioMensajes = ({ id, lista }) => {
   return (
     <div className="bloqueForm">
       <h2>Formulario añadir mensajes</h2>
+      {error ? (
+        <h4 style={{ color: "red" }}>Completa todos los campos</h4>
+      ) : null}
       <form onSubmit={gestorSubmit} action="">
         <label htmlFor="id" className="form-label">
           Introduce nuevo ID:
@@ -61,7 +64,6 @@ const FormularioMensajes = ({ id, lista }) => {
           onChange={IdChanger}
           value={nuevoId}
           className="form-control form-control-sm"
-          required
         />
 
         <br></br>
@@ -74,7 +76,6 @@ const FormularioMensajes = ({ id, lista }) => {
           value={nuevoMensaje}
           className="form-control form-control-sm"
           id="mens"
-          required
         />
 
         <br></br>
@@ -87,7 +88,6 @@ const FormularioMensajes = ({ id, lista }) => {
           onChange={authorChanger}
           value={nuevoAutor}
           className="form-control form-control-sm"
-          required
         />
 
         <br></br>
@@ -100,7 +100,6 @@ const FormularioMensajes = ({ id, lista }) => {
           onChange={dateChanger}
           value={nuevaFecha}
           className="form-control form-control-sm"
-          required
         />
 
         <br></br>
