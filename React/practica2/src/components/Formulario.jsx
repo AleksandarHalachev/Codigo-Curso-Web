@@ -30,9 +30,9 @@ const Formulario = ({ id, lista }) => {
     setError(false);
     if (
       nuevoId === "" ||
-      nuevoNombre === "" ||
-      nuevoEmail === "" ||
-      nuevoNick === ""
+      nuevoNombre.trim() === "" ||
+      nuevoEmail.trim() === "" ||
+      nuevoNick.trim() === ""
     ) {
       setError(true);
       return;

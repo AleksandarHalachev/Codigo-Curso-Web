@@ -31,9 +31,9 @@ const FormularioMensajes = ({ id, lista }) => {
     setError(false);
     if (
       nuevoId === "" ||
-      nuevaFecha === "" ||
-      nuevoAutor === "" ||
-      nuevoMensaje === ""
+      nuevaFecha.trim() === "" ||
+      nuevoAutor.trim() === "" ||
+      nuevoMensaje.trim() === ""
     ) {
       setError(true);
       return;
@@ -47,6 +47,11 @@ const FormularioMensajes = ({ id, lista }) => {
         fecha: nuevaFecha,
       },
     ]);
+
+    setFecha("");
+    setAutor("");
+    setId("");
+    setNuevoMensaje("");
   };
   return (
     <div className="bloqueForm">
@@ -115,7 +120,7 @@ const FormularioMensajes = ({ id, lista }) => {
             {mensajes.map((elemento) => {
               return (
                 <li>
-                  <ListarMensajesActual key={mensajes.id} mensaje={elemento} />
+                  <ListarMensajesActual mensaje={elemento} />
                 </li>
               );
             })}
