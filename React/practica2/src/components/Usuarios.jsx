@@ -2,6 +2,9 @@ import React from "react";
 import ListarUsuarios from "./ListarUsuarios";
 import "./Usuarios.css";
 import Formulario from "./Formulario";
+import { useState } from "react";
+import ListarListaNueva from "./ListarListaNueva";
+import "./Formulario.css";
 
 const usuarios = [
   { id: 1, email: "pepito@pepito.com", nombre: "Pepito", nickname: "Pepito98" },
@@ -19,17 +22,32 @@ const usuarios = [
   },
 ];
 const Usuarios = () => {
-  const listaUsuarios = usuarios;
+  const [usuariosNuevo, setUsuarios] = useState(usuarios);
+  const crearNuevoUsuario = (usuario) => {
+    setUsuarios([...usuariosNuevo, usuario]);
+  };
   return (
     <div>
       <div className="ListaDinUsuarios">
         <h2>Usuarios:</h2>
-        {listaUsuarios.map((elemento) => {
+        {usuarios.map((elemento) => {
           return <ListarUsuarios key={elemento.id} element={elemento} />;
         })}
       </div>
-      <div>
-        <Formulario key={usuarios.id} lista={usuarios} />
+      <div className="bloqueForm">
+        <Formulario key={usuarios.id} onCrearUsuario={crearNuevoUsuario} />
+        <h2>Usuarios</h2>
+        <div className="listaActualUsuarios">
+          <ul style={{ listStyleType: "none" }}>
+            {usuariosNuevo.map((elemento) => {
+              return (
+                <li>
+                  <ListarListaNueva key={usuariosNuevo.id} usuario={elemento} />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );

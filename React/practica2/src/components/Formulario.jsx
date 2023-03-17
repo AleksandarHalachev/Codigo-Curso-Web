@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import ListarListaNueva from "./ListarListaNueva";
 import "./Formulario.css";
-const Formulario = ({ id, lista }) => {
+const Formulario = ({ id, onCrearUsuario }) => {
   // useStates para acceder a los estados
-  const [usuarios, setUsuario] = useState(lista);
+
   const [error, setError] = useState(false);
   const [nuevoId, setId] = useState("");
   const [nuevoNombre, setNombre] = useState("");
@@ -37,15 +36,14 @@ const Formulario = ({ id, lista }) => {
       setError(true);
       return;
     }
-    setUsuario([
-      ...usuarios,
-      {
-        id: nuevoId,
-        email: nuevoEmail,
-        nombre: nuevoNombre,
-        nickname: nuevoNick,
-      },
-    ]);
+    const nuevoUsuario = {
+      id: nuevoId,
+      email: nuevoEmail,
+      nombre: nuevoNombre,
+      nickname: nuevoNick,
+    };
+
+    onCrearUsuario(nuevoUsuario);
 
     setId("");
     setNombre("");
@@ -53,7 +51,7 @@ const Formulario = ({ id, lista }) => {
     setNick("");
   };
   return (
-    <div className="bloqueForm">
+    <div>
       <h2>Formulario añadir usuarios</h2>
       {error ? (
         <h4 style={{ color: "red" }}>Completa todos los campos</h4>
@@ -111,21 +109,6 @@ const Formulario = ({ id, lista }) => {
           Enviar
         </button>
       </form>
-      <br />
-      <div>
-        <h2>Usuarios</h2>
-        <div className="listaActualUsuarios">
-          <ul style={{ listStyleType: "none" }}>
-            {usuarios.map((elemento) => {
-              return (
-                <li>
-                  <ListarListaNueva key={usuarios.id} usuario={elemento} />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
     </div>
   );
 };
