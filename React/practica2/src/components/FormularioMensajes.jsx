@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./FormularioMensajes.css";
-import ListarMensajesActual from "./ListarMensajesActual";
 
-const FormularioMensajes = ({ id, lista }) => {
+const FormularioMensajes = ({ id, onCrearMensaje }) => {
   // useStates para acceder a los estados
-  const [mensajes, setMensaje] = useState(lista);
+
   const [error, setError] = useState(false);
   const [nuevoId, setId] = useState("");
   const [nuevoMensaje, setNuevoMensaje] = useState("");
@@ -38,15 +37,15 @@ const FormularioMensajes = ({ id, lista }) => {
       setError(true);
       return;
     }
-    setMensaje([
-      ...mensajes,
-      {
-        id: nuevoId,
-        mensaje: nuevoMensaje,
-        autor: nuevoAutor,
-        fecha: nuevaFecha,
-      },
-    ]);
+
+    const nuevoElemento = {
+      id: nuevoId,
+      autor: nuevoAutor,
+      fecha: nuevaFecha,
+      mensaje: nuevoMensaje,
+    };
+
+    onCrearMensaje(nuevoElemento);
 
     setFecha("");
     setAutor("");
@@ -106,27 +105,11 @@ const FormularioMensajes = ({ id, lista }) => {
           value={nuevaFecha}
           className="form-control form-control-sm"
         />
-
         <br></br>
         <button type="submit" className="btn btn-primary">
           Enviar
         </button>
       </form>
-      <br />
-      <div>
-        <h2>Mensajes</h2>
-        <div className="listaActualMensajes">
-          <ul style={{ listStyleType: "none" }}>
-            {mensajes.map((elemento) => {
-              return (
-                <li>
-                  <ListarMensajesActual mensaje={elemento} />
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
     </div>
   );
 };

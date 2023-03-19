@@ -1,8 +1,9 @@
 import "./Blog.css";
-import React from "react";
 import ListarElementos from "./ListarElementos";
 import ListaElementosEstatica from "./ListaElementosEstatica";
 import FormularioMensajes from "./FormularioMensajes";
+import React, { useState } from "react";
+import ListarMensajesNuevos from "./ListarMensajesNuevos";
 
 const mensajes = [
   {
@@ -20,8 +21,11 @@ const mensajes = [
   },
 ];
 let hayMensajes = Math.round(Math.random());
-
 const Blog = () => {
+  const [nuevosMensajes, setNuevosMensajes] = useState(mensajes);
+  const crearNuevoMensaje = (mensaje) => {
+    setNuevosMensajes([...nuevosMensajes, mensaje]);
+  };
   const saludo = "Mensajes de forma estática";
 
   return (
@@ -40,8 +44,26 @@ const Blog = () => {
           <h1>No hay mensajes nuevos</h1>
         )}
       </div>
-      <div>
-        <FormularioMensajes key={mensajes.id} lista={mensajes} />
+      <div className="bloqueForm">
+        <FormularioMensajes
+          key={mensajes.id}
+          onCrearMensaje={crearNuevoMensaje}
+        />
+        <h2>Mensajes:</h2>
+        <div className="">
+          <ul style={{ listStyleType: "none" }}>
+            {nuevosMensajes.map((elemento) => {
+              return (
+                <li>
+                  <ListarMensajesNuevos
+                    key={nuevosMensajes.id}
+                    mensaje={elemento}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </div>
   );

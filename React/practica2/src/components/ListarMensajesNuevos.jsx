@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListarMensajesActual = ({ mensaje }) => {
+const ListarMensajesNuevos = ({ mensaje, id }) => {
   return (
     <div>
       <p>
@@ -10,4 +10,4 @@ const ListarMensajesActual = ({ mensaje }) => {
   );
 };
 
-export default ListarMensajesActual;
+export default ListarMensajesNuevos;
