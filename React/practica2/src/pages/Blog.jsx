@@ -1,9 +1,9 @@
 import "./Blog.css";
-import ListarElementos from "./ListarElementos";
-import ListaElementosEstatica from "./ListaElementosEstatica";
-import FormularioMensajes from "./FormularioMensajes";
+import ListarElementos from "../components/ListarElementos";
+import ListaElementosEstatica from "../components/ListaElementosEstatica";
+import FormularioMensajes from "../components/FormularioMensajes";
 import React, { useState } from "react";
-import ListarMensajesNuevos from "./ListarMensajesNuevos";
+import ListarMensajesNuevos from "../components/ListarMensajesNuevos";
 
 const mensajes = [
   {

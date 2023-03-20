@@ -1,10 +1,9 @@
 import React from "react";
-import ListarUsuarios from "./ListarUsuarios";
+import ListarUsuarios from "../components/ListarUsuarios";
 import "./Usuarios.css";
-import Formulario from "./Formulario";
+import Formulario from "../components/Formulario";
 import { useState } from "react";
-import ListarListaNueva from "./ListarListaNueva";
-import "./Formulario.css";
+import ListarListaNueva from "../components/ListarListaNueva";
 
 const usuarios = [
   { id: 1, email: "pepito@pepito.com", nombre: "Pepito", nickname: "Pepito98" },
