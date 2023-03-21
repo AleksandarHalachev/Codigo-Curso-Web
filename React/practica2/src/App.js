@@ -2,7 +2,12 @@ import "./App.css";
 import Blog from "./pages/Blog";
 import Usuarios from "./pages/Usuarios";
 import Navbar from "./components/Navbar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Inicio from "./pages/Inicio";
 import Contacto from "./pages/Contacto";
 import Error from "./pages/Error";
@@ -15,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Inicio />}></Route>
           <Route path="/usuarios" element={<Usuarios />}></Route>
+          <Route path="/usuario" element={<Navigate to="/usuarios" />} />
           <Route path="/blog" element={<Blog />}></Route>
           <Route path="/contacto" element={<Contacto />}></Route>
           <Route path="*" element={<Error />}></Route>
