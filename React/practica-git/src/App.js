@@ -1,7 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  const mensaje = "Probando git";
+  console.log(mensaje);
   return (
     <div className="App">
       <header className="App-header">
