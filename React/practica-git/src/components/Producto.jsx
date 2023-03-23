@@ -3,7 +3,7 @@ import React from "react";
 const Producto = () => {
   return (
     <div>
-      <h1>Producto</h1>
+      <h1>Producto modificado en rama componentes</h1>
     </div>
   );
 };
