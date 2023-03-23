@@ -1,7 +1,11 @@
 import React from "react";
 
 const Carrito = () => {
-  return <div>Carrito</div>;
+  return (
+    <div>
+      <h1>Carrito</h1>
+    </div>
+  );
 };
 
 export default Carrito;
