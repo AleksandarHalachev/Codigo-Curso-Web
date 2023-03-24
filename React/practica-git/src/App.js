@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const mensaje = "Probando git 2";
+  const mensaje = "Probando modificación desde GitHub y sincronizar con repo local";
   console.log(mensaje);
   return (
     <div className="App">
