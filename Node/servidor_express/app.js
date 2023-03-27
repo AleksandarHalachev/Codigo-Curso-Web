@@ -47,6 +47,7 @@ app.get("/api/usuarios/:id", (req, res) => {
   });
   if (!usuario) {
     res.status(404).send("Id de usuario inválido.");
+    return;
   } else {
     res.send(usuario);
   }
@@ -61,6 +62,37 @@ app.post("/api/usuarios/", (req, res) => {
   };
   usuarios.push(usuario);
   res.status(200).send(usuarios);
+});
+
+app.put("/api/usuarios/:id", (req, res) => {
+  let idUsuario = parseInt(req.params.id);
+  let usuario = usuarios.find((usuario) => {
+    return idUsuario === usuario.id;
+  });
+  if (!usuario) {
+    res.status(404).send("Id de usuario inválido.");
+    return;
+  } else {
+    usuario.nombre = req.body.nombre;
+    usuario.apellidos = req.body.apellidos;
+    usuario.actividad = req.body.actividad;
+    res.status(200).send(usuario);
+  }
+});
+
+app.delete("/api/usuarios/:id", (req, res) => {
+  let idUsuario = parseInt(req.params.id);
+  let usuario = usuarios.find((usuario) => {
+    return idUsuario === usuario.id;
+  });
+  if (!usuario) {
+    res.status(404).send("Id de usuario inválido.");
+    return;
+  } else {
+    let indice = usuarios.indexOf(usuario);
+    usuarios.splice(indice, 1);
+    res.status(200).send(usuarios);
+  }
 });
 
 app.listen(3000, () => {
