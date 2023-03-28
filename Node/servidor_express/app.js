@@ -28,6 +28,7 @@ const usuarios = [
 
 const express = require("express");
 const app = express();
+const Joi = require("joi");
 app.use(express.json());
 
 app.get("/api/", (req, res) => {
@@ -54,6 +55,17 @@ app.get("/api/usuarios/:id", (req, res) => {
 });
 
 app.post("/api/usuarios/", (req, res) => {
+  const schema = Joi.object({
+    nombre: Joi.string().min(3).required(),
+    apellidos: Joi.string().min(3).required(),
+    actividad: Joi.string().min(5).required(),
+  });
+  const validation = schema.validate(req.body);
+  if (validation.error) {
+    console.log(validation.error.details[0].message);
+    res.status(400).send(validation.error.details[0].message);
+    return;
+  }
   let usuario = {
     id: usuarios.length + 1,
     nombre: req.body.nombre,
