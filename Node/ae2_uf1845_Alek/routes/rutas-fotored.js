@@ -90,9 +90,11 @@ router.get("/usuarios/:nombre", (req, res, next) => {
 router.post("/usuarios/", (req, res, next) => {
   const schema = Joi.object({
     nombre: Joi.string().min(6).max(25).required(),
-    email: Joi.string().email({ tlds: { allow: ["es"] } }),
-    conectado: Joi.boolean().falsy("No").truthy("Sí"),
-    mensajes: Joi.array().items(Joi.string()),
+    email: Joi.string()
+      .regex(/^[A-Za-z0-9._%+-]+@fotored\.es$/)
+      .required(),
+    conectado: Joi.boolean().falsy("No").truthy("Sí").required(),
+    mensajes: Joi.array().items(Joi.string()).required(),
     seguidores: Joi.number().integer().min(0).max(10000).required(),
     siguiendo: Joi.number().integer().min(0).max(5000).required(),
     puntuacion: Joi.number().integer().min(0).max(10).required(),
