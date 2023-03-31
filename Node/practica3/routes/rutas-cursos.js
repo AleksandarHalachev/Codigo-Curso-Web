@@ -25,7 +25,7 @@ const cursos = [
 router.get("/", (req, res, next) => {
   res.json({
     message:
-      "Este es el endpoint origen. Accede a /api/cursos para ver todos los usuarios, /api/cursos/:id para ver un curso en concreto",
+      "Este es el endpoint origen de la api de cursos. Accede a /api/cursos para ver todos los cursos, /api/cursos/:id para ver un curso en concreto",
   });
   next();
 });
