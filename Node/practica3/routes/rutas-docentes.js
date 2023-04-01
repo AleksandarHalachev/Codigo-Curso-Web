@@ -57,6 +57,18 @@ router.get("/docentes/:id", (req, res, next) => {
 });
 
 router.post("/docentes/", (req, res, next) => {
+  const schema = Joi.object({
+    nombre: Joi.string().min(6).max(12).required(),
+    apellidos: Joi.string().min(10).required(),
+    email: Joi.string().email({ tlds: { allow: ["es"] } }),
+    password: Joi.string().min(6).max(12).alphanum(),
+  });
+  const validation = schema.validate(req.body);
+  if (validation.error) {
+    console.log(validation.error.details[0].message);
+    res.status(400).send(validation.error.details[0].message);
+    return;
+  }
   const nuevoDocente = {
     id: docentes.length + 1,
     nombre: req.body.nombre,
@@ -78,6 +90,18 @@ router.put("/docentes/:id", (req, res, next) => {
     res.status(404).send("Id de docente no encontrado ");
     return;
   } else {
+    const schema = Joi.object({
+      nombre: Joi.string().min(6).max(12).required(),
+      apellidos: Joi.string().min(10).required(),
+      email: Joi.string().email({ tlds: { allow: ["es"] } }),
+      password: Joi.string().min(6).max(12).alphanum(),
+    });
+    const validation = schema.validate(req.body);
+    if (validation.error) {
+      console.log(validation.error.details[0].message);
+      res.status(400).send(validation.error.details[0].message);
+      return;
+    }
     elDocente.nombre = req.body.nombre;
     elDocente.apellidos = req.body.apellidos;
     elDocente.email = req.body.email;

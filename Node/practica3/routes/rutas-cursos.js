@@ -54,6 +54,17 @@ router.get("/cursos/:id", (req, res, next) => {
 });
 
 router.post("/cursos/", (req, res, next) => {
+  const schema = Joi.object({
+    curso: Joi.string().required(),
+    docente: Joi.string().min(6).required(),
+    precio: Joi.number().min(0).max(10000).integer().required(),
+  });
+  const validation = schema.validate(req.body);
+  if (validation.error) {
+    console.log(validation.error.details[0].message);
+    res.status(400).send(validation.error.details[0].message);
+    return;
+  }
   const nuevoCurso = {
     id: cursos.length + 1,
     curso: req.body.curso,
@@ -74,6 +85,17 @@ router.put("/cursos/:id", (req, res, next) => {
     res.status(404).send("Id de curso no encontrado ");
     return;
   } else {
+    const schema = Joi.object({
+      curso: Joi.string().required(),
+      docente: Joi.string().min(6).required(),
+      precio: Joi.number().min(0).max(10000).integer().required(),
+    });
+    const validation = schema.validate(req.body);
+    if (validation.error) {
+      console.log(validation.error.details[0].message);
+      res.status(400).send(validation.error.details[0].message);
+      return;
+    }
     elCurso.curso = req.body.curso;
     elCurso.docente = req.body.docente;
     elCurso.precio = req.body.precio;
