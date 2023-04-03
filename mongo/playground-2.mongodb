@@ -1,0 +1,111 @@
+use("fotored");
+db.createCollection("redsocial");
+
+db.redsocial.insertOne({
+  usuario: "Juan50mm",
+  mensajes: ["Soy Juan y usé la de 50mm.", "No me juzguen", "Soy sensible"],
+  conectado: "si",
+  seguidores: 233,
+  sigue: 444,
+  puntuacion: 6,
+});
+
+db.redsocial.insertOne({
+  usuario: "CamilaAP",
+  mensajes: [
+    "Camille es un personaje del LoL",
+    "AP significa Ability Power en el LoL",
+    "Camille es un personaje que escala con AD (Attack Damage) y no AP, por lo tanto CamilaAP es una incongruencia dentro del mundo del LoL.",
+  ],
+  conectado: "no",
+  seguidores: 0,
+  sigue: 0,
+  puntuacion: 0,
+});
+
+db.redsocial.insertMany([
+  {
+    usuario: "FrankEOS",
+    mensajes: [
+      "Frank es nombre de personaje de peli de antena 3",
+      "Los Frank suelen hacer fotos",
+      "Frank suele ser el padre",
+    ],
+    conectado: "si",
+    seguidores: 1000,
+    sigue: 234,
+    puntuacion: 10,
+  },
+  {
+    usuario: "BenLandscape",
+    mensajes: [
+      "Ben landscape es un fondo de escritorio de Ben Kenobi de Star Wars",
+      "Ben es corto para Benjamin pero aún más corto para Obi Wan",
+      "Landscape es un paisaje natural, posiblemente en Tattoine.",
+    ],
+    conectado: "si",
+    seguidores: 23,
+    sigue: 452345643644,
+    puntuacion: 8,
+  },
+  {
+    usuario: "PaulaShutter",
+    mensajes: [
+      "Shutter es obturador de cámara en inglés",
+      "Paula es un nombre común, pero Shutter no es un apellido común (probablemente no es el apellido)",
+      "Shutter también significa persiana así que igual se llama Paula Persiana",
+    ],
+    conectado: "no",
+    seguidores: 22,
+    sigue: 84,
+    puntuacion: 4,
+  },
+]);
+
+db.redsocial.find({ conectado: "si" });
+
+db.redsocial.find({ seguidores: { $gt: 100 } });
+
+db.redsocial.updateOne({ usuario: "CamilaAP" }, { $set: { seguidores: 101 } });
+
+db.redsocial.updateMany({}, { $set: { estilo: "paisaje" } });
+
+db.redsocial.updateMany(
+  { $or: [{ usuario: "FrankEOS" }, { usuario: "CamilaAP" }] },
+  { $set: { estilo: "retrato" } }
+);
+
+db.redsocial.updateMany({}, { $unset: { puntuacion: "" } });
+
+db.redsocial.updateMany({}, { $set: { puntuacion: 0 } });
+
+db.redsocial.updateOne(
+  { usuario: "PaulaShutter" },
+  { $set: { puntuacion: 50 } }
+);
+
+db.redsocial.updateMany(
+  { usuario: { $ne: "PaulaShutter" } },
+  { $set: { puntuacion: 10 } }
+);
+
+db.redsocial.find({
+  $or: [{ puntuacion: 10 }, { puntuacion: 40 }, { puntuacion: 50 }],
+});
+
+db.redsocial.find({ puntuacion: { $ne: 10 } });
+
+db.redsocial.find({
+  $or: [
+    { estilo: { $not: { $exists: "retrato" } } },
+    { estilo: { $not: { $exists: "paisaje" } } },
+  ],
+});
+
+db.redsocial.find();
+
+db.redsocial.deleteMany({ $or: [{ puntuacion: 40 }, { puntuacion: 50 }] });
+
+db.redsocial.updateMany({}, { $set: { conectado: "no" } });
+
+db.redsocial.find({ sigue: { $gt: 1000 } });
