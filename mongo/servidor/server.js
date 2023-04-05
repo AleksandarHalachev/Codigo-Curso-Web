@@ -19,7 +19,7 @@ app.use((req, res) => {
 
 mongoose
   .connect(
-    "mongodb+srv://frandavila:cife1234@clusterio.3fznd.mongodb.net/academia?retryWrites=true&w=majority"
+    "mongodb+srv://alekbalek1:Bubarak1@clusterprueba.suxokql.mongodb.net/?retryWrites=true&w=majority"
   )
   .then(() => {
     app.listen(port, () => console.log(`Escuchando en puerto ${port}`));
