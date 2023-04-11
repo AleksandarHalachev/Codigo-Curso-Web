@@ -5,12 +5,13 @@ port = 5000;
 
 app.use(express.json());
 
-// Gestión de las rutas
 const rutasCursos = require("./routes/rutas-cursos");
 app.use("/api/cursos", rutasCursos);
 
+const rutasUsuarios = require("./routes/rutas-usuarios");
+app.use("/api/usuarios", rutasUsuarios);
+
 app.use((req, res) => {
-  // Middleware que se ejecuta cuando el servidor no tiene la ruta que se ha enviado desde el cliente
   res.status(404);
   res.json({
     mensaje: "Información no encontrada",
