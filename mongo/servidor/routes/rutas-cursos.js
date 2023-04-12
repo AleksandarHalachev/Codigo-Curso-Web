@@ -2,7 +2,6 @@ const express = require("express");
 const Curso = require("../models/models-cursos");
 const router = express.Router();
 
-// * Recuperar cursos desde la BDD en Atlas
 router.get("/", async (req, res, next) => {
   let cursos;
   try {
@@ -17,7 +16,6 @@ router.get("/", async (req, res, next) => {
   });
 });
 
-// * Recuperar un curso en base a su id desde la BDD en Atlas
 router.get("/:id", async (req, res, next) => {
   const idCurso = req.params.id;
   let curso;
@@ -35,17 +33,15 @@ router.get("/:id", async (req, res, next) => {
   });
 });
 
-// * Como crear un nuevo curso y guardarlo en la BDD
 router.post("/", async (req, res, next) => {
-  const { curso, docente, precio } = req.body; // destructuring
-  // Nuevo documento basado en el Modelo del Curso
+  const { curso, docente, precio } = req.body;
   const nuevoCurso = new Curso({
     curso,
     docente,
     precio,
   });
   try {
-    await nuevoCurso.save(); // Guardar en MongoDB Atlas
+    await nuevoCurso.save();
   } catch (error) {
     const err = new Error("No se han podido guardar los datos");
     err.code = 500;
