@@ -1,0 +1,19 @@
+{
+  "name": "practica2_uf1846_alek",
+  "version": "1.0.0",
+  "description": "Relaciones entre especies y localizaciones",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Alek",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
