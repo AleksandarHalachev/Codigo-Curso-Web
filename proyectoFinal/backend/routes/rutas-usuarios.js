@@ -85,4 +85,33 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.post("/login", async (req, res, next) => {
+  const { email, password } = req.body;
+  let usuarioExiste;
+  try {
+    usuarioExiste = await Usuario.findOne({ email: email });
+  } catch (err) {
+    const error = new Error("No se puede realizar la operación");
+    error.code = 500;
+    return next(error);
+  }
+
+  if (!usuarioExiste) {
+    const error = new Error("Email no existe");
+    error.code = 422;
+    return next(error);
+  }
+
+  let passwordValido = false;
+  passwordValido = bcrypt.compareSync(password, usuarioExiste.password);
+  if (!passwordValido) {
+    const error = new Error("Contraseña incorrecta");
+    error.code = 401;
+    return next(error);
+  }
+  res.json({
+    mensaje: "Usuario autenticado",
+    email: usuarioExiste.email,
+  });
+});
 module.exports = router;
