@@ -20,7 +20,6 @@ router.get("/", async (req, res, next) => {
   });
 });
 
-// * Recuperar un especie por su Id
 router.get("/:id", async (req, res, next) => {
   const idEspecie = req.params.id;
   let especie;

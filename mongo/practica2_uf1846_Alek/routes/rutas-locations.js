@@ -20,7 +20,6 @@ router.get("/", async (req, res, next) => {
   });
 });
 
-// * Listar un location en concreto
 router.get("/:id", async (req, res, next) => {
   const idLocation = req.params.id;
   let location;
