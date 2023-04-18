@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const Usuario = require("../models/usuarios-model");
 
@@ -48,7 +49,7 @@ router.post("/", async (req, res, next) => {
   try {
     existeUsuario = await Usuario.findOne({ email: email });
   } catch (err) {
-    const error = new Error("Email ya existe");
+    const error = new Error("Error en la búsqueda de usuario.");
     error.code = 500;
     return next(error);
   }
@@ -78,9 +79,29 @@ router.post("/", async (req, res, next) => {
       err.code = 500;
       return next(err);
     }
+    let token;
+
+    try {
+      token = jwt.sign(
+        {
+          userId: nuevoUsuario.id,
+          nombre: nuevoUsuario.nombre,
+          email: nuevoUsuario.email,
+        },
+        "clavetoken",
+        { expiresIn: "1h" }
+      );
+    } catch (error) {
+      const err = new Error("Error al crear el token");
+      err.code = 500;
+      return next(err);
+    }
     res.status(201).json({
       mensaje: "Usuario creado",
-      usuario: nuevoUsuario,
+      userId: nuevoUsuario.id,
+      nombre: nuevoUsuario.nombre,
+      email: nuevoUsuario.email,
+      token: token,
     });
   }
 });
@@ -109,9 +130,29 @@ router.post("/login", async (req, res, next) => {
     error.code = 401;
     return next(error);
   }
+
+  let token;
+  try {
+    token = await jwt.sign(
+      {
+        userId: usuarioExiste.id,
+        nombre: usuarioExiste.nombre,
+        email: usuarioExiste.email,
+      },
+      "clavetoken",
+      { expiresIn: "1h" }
+    );
+  } catch (err) {
+    const error = new Error("No se puede realizar la operación");
+    error.code = 500;
+    return next(error);
+  }
   res.json({
     mensaje: "Usuario autenticado",
+    userId: usuarioExiste.id,
     email: usuarioExiste.email,
+    nombre: usuarioExiste.nombre,
+    token: token,
   });
 });
 module.exports = router;
