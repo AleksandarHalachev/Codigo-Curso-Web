@@ -1,0 +1,14 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"name": "chankin-1",
+		"path": "../Chankin/chankin-1"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Codigo Curso Web"
+  }
+}
