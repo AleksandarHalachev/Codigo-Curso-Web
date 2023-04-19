@@ -79,41 +79,35 @@ router.post("/", async (req, res, next) => {
   });
 });
 
-// * Modificar una localización
 router.patch("/:id", async (req, res, next) => {
   const { pais, zona, fechaInicio, fechaFin, especies } = req.body;
   const idLocalizacion = req.params.id;
   buscarEspecie = await Specie.findOne({ nombre: especies });
   if (buscarEspecie) {
-    // ! Si la especie existe
     const err = new Error("La especie que quiere añadir ya existe");
     err.code = 400; // Error
     return next(err);
   } else {
-    // ! Si la especie no existe
     console.log(buscarEspecie);
     let buscarLocalizacion;
     try {
       buscarLocalizacion = await Localizacion.findById(idLocalizacion);
     } catch (error) {
-      // console.log(error.message);
       const err = new Error(
         "Ha ocurrido un error. No se han podido modificar los datos"
       );
       error.code = 500;
       return next(err);
     }
-    // console.log(buscarLocalizacion.especies);
-    // console.log(especies);
+
     console.log(buscarEspecie);
-    // let eSpecies = especies;
+
     try {
       buscarEspecie = await Specie.findOne({ nombre: especies }); // ! Solo añadir una nueva  especie al array de especies
       if (especies) {
         buscarLocalizacion.especies.push(buscarEspecie.id);
         await buscarLocalizacion.save();
       } else {
-        // ! Para modificar el resto de los datos de la localización
         buscarLocalizacion = await Location.findByIdAndUpdate(
           idLocalizacion,
           req.body,

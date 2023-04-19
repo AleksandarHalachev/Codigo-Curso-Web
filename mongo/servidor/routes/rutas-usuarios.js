@@ -40,16 +40,16 @@ router.post("/", async (req, res, next) => {
     email,
     contraseña,
   });
-  try {
-    await nuevoUsuario.save();
-  } catch (error) {
-    const err = new Error("No se han podido guardar los datos");
-    err.code = 500;
-    return next(err);
-  }
-  res.status(201).json({
-    usuario: nuevoUsuario,
-  });
+  await nuevoUsuario
+    .save()
+    .then(() => {
+      res.status(201).json({
+        usuario: nuevoUsuario,
+      });
+    })
+    .catch((err) => {
+      res.status(500).send("Se producido un error: " + err.message);
+    });
 });
 
 router.put("/:id", async (req, res, next) => {

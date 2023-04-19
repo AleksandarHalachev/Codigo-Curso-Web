@@ -65,19 +65,16 @@ router.get("/buscar/:busca", async (req, res, next) => {
   res.status(200).json({ mensaje: "Todos los cursos", cursos: cursos });
 });
 
-// * Crear un nuevo curso (y el docente relacionado) y guardarlo en Atlas
 router.post("/", async (req, res, next) => {
-  // ? Primero creamos el curso y lo guardamos en Atlas
   const { curso, docente, opcion, aula, precio } = req.body;
   const nuevoCurso = new Curso({
-    // Nuevo documento basado en el Model Curso.
     curso: curso,
     docente: docente,
     opcion: opcion,
     aula: aula,
     precio: precio,
   });
-  // ? Localizamos al docente que se corresponde con el que hemos recibido en el request
+
   let docenteBusca;
   try {
     docenteBusca = await Docente.findById(req.body.docente);
@@ -87,7 +84,7 @@ router.post("/", async (req, res, next) => {
     return next(err);
   }
   console.log(docenteBusca);
-  // ? Si no está en la BDD mostrar error y salir
+
   if (!docenteBusca) {
     const error = new Error(
       "No se ha podido encontrar un docente con el id proporcionado"
@@ -95,17 +92,11 @@ router.post("/", async (req, res, next) => {
     error.code = 404;
     return next(error);
   }
-  /**
-   * ? Si está en la BDD tendremos que:
-   * ?  1 - Guardar el nuevo curso
-   * ?  2 - Añadir el nuevo curso al array de cursos del docente localizado
-   * ?  3 - Guardar el docente, ya con su array de cursos actualizado
-   */
   console.log(docenteBusca);
   try {
-    await nuevoCurso.save(); // ? (1)
-    docenteBusca.cursos.push(nuevoCurso); // ? (2)
-    await docenteBusca.save(); // ? (3)
+    await nuevoCurso.save();
+    docenteBusca.cursos.push(nuevoCurso);
+    await docenteBusca.save();
   } catch (error) {
     const err = new Error("Ha fallado la creación del nuevo curso");
     err.code = 500;
@@ -117,12 +108,11 @@ router.post("/", async (req, res, next) => {
   });
 });
 
-// * Modificar un curso en base a su id ( y su referencia en docentes)
 router.patch("/:id", async (req, res, next) => {
   const idCurso = req.params.id;
   let cursoBuscar;
   try {
-    cursoBuscar = await Curso.findById(idCurso).populate("docente"); // (1) Localizamos el curso en la BDD
+    cursoBuscar = await Curso.findById(idCurso).populate("docente");
   } catch (error) {
     const err = new Error(
       "Ha habido algún problema. No se ha podido actualizar la información del curso"
@@ -131,18 +121,17 @@ router.patch("/:id", async (req, res, next) => {
     throw err;
   }
 
-  // ? Si existe el curso y el usuario se ha verificado
   try {
     cursoBuscar = await Curso.findById(idCurso).populate("docente");
-    // ? Bloque si queremos modificar el docente que imparte el curso
+
     if (req.body.docente) {
-      cursoBuscar.docente.cursos.pull(cursoBuscar); // * Elimina el curso del docente al que se le va a quitar
-      await cursoBuscar.docente.save(); // * Guarda dicho docente
-      docenteBuscar = await Docente.findById(req.body.docente); // * Localiza el docente a quien se le va a reasignar el curso
-      docenteBuscar.cursos.push(cursoBuscar); // * Añade al array de cursos del docente el curso que se le quitó al otro docente
-      docenteBuscar.save(); // * Guardar el docente con el nuevo curso en su array de cursos
+      cursoBuscar.docente.cursos.pull(cursoBuscar);
+      await cursoBuscar.docente.save();
+      docenteBuscar = await Docente.findById(req.body.docente);
+      docenteBuscar.cursos.push(cursoBuscar);
+      docenteBuscar.save();
     }
-    // ? Si queremos modificar cualquier propiedad del curso, menos el docente.
+
     cursoBuscar = await Curso.findByIdAndUpdate(idCurso, req.body, {
       new: true,
       runValidators: true,
@@ -161,12 +150,11 @@ router.patch("/:id", async (req, res, next) => {
   });
 });
 
-// * Eliminar un curso en base a su id (y el docente relacionado)
 router.delete("/:id", async (req, res, next) => {
   const idCurso = req.params.id;
   let curso;
   try {
-    curso = await Curso.findById(idCurso).populate("docente"); // ? Localizamos el curso en la BDD por su id
+    curso = await Curso.findById(idCurso).populate("docente");
   } catch (err) {
     const error = new Error(
       "Ha habido algún error. No se han podido recuperar los datos para eliminación"
@@ -175,7 +163,6 @@ router.delete("/:id", async (req, res, next) => {
     return next(error);
   }
   if (!curso) {
-    // ? Si no se ha encontrado ningún curso lanza un mensaje de error y finaliza la ejecución del código
     const error = new Error(
       "No se ha podido encontrar un curso con el id proporcionado"
     );
@@ -183,13 +170,10 @@ router.delete("/:id", async (req, res, next) => {
     return next(error);
   }
 
-  // ? Si existe el curso y el usuario se ha verificado
   try {
-    // ? (1) Eliminar curso de la colección
     await curso.deleteOne();
-    // ? (2) En el campo docente del documento curso estará la lista con todos lo cursos de dicho docente. Con el método pull() le decimos a mongoose que elimine el curso también de esa lista.
     curso.docente.cursos.pull(curso);
-    await curso.docente.save(); // ? (3) Guardamos los datos de el campo docente en la colección curso, ya que lo hemos modificado en la línea de código previa
+    await curso.docente.save();
   } catch (err) {
     const error = new Error(
       "Ha habido algún error. No se han podido eliminar los datos"
