@@ -1,7 +1,12 @@
 import React from "react";
+import FormularioReg from "../components/FormularioReg";
 
 const Registro = () => {
-  return <div>Registro</div>;
+  return (
+    <div>
+      <FormularioReg />
+    </div>
+  );
 };
 
 export default Registro;
