@@ -12,7 +12,7 @@ const FormularioLogin = () => {
             <input type="email" className="input" placeholder="Email" />
             <input type="password" className="input" placeholder="Contraseña" />
           </div>
-          <button>Registrar</button>
+          <button>Iniciar sesión</button>
         </form>
       </div>
     </div>
