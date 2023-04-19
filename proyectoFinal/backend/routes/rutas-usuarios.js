@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const checkAuth = require("../middleware/check-auth");
 const Usuario = require("../models/usuarios-model");
 
 router.get("/", async (req, res, next) => {
@@ -42,6 +42,8 @@ router.get("/:id", async (req, res, next) => {
     usuario: usuario,
   });
 });
+
+router.use(checkAuth);
 
 router.post("/", async (req, res, next) => {
   const { nombre, email, password } = req.body;
