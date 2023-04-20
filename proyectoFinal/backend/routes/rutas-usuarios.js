@@ -161,14 +161,17 @@ router.post("/login", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   let usuarioBorrar;
   try {
-    usuarioBorrar = await Usuario.findByIdAndDelete({ id: req.params.id });
+    usuarioBorrar = await Usuario.findByIdAndDelete(req.params.id);
   } catch (err) {
-    const error = new Error("No se puede realizar la operación");
+    const error = new Error(
+      "Ha habido algún error. No se han podido eliminar los datos"
+    );
     error.code = 500;
     return next(error);
   }
   res.json({
     mensaje: "Usuario borrado",
+    usuario: usuarioBorrar,
   });
 });
 module.exports = router;
