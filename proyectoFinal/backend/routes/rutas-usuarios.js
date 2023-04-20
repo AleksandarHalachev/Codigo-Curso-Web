@@ -158,6 +158,26 @@ router.post("/login", async (req, res, next) => {
   });
 });
 
+router.patch("/:id", async (req, res, next) => {
+  let usuarioModificar;
+  let idUsuario = req.params.id;
+  try {
+    usuarioModificar = await Usuario.findByIdAndUpdate(idUsuario, req.body, {
+      new: true,
+      runValidators: true,
+    });
+  } catch (err) {
+    res.status(404).json({
+      mensaje: "No se han podido actualizar los datos",
+      error: err.message,
+    });
+  }
+  res.status(200).json({
+    mensaje: "Datos de usuario modificados",
+    usuario: usuarioModificar,
+  });
+});
+
 router.delete("/:id", async (req, res, next) => {
   let usuarioBorrar;
   try {
