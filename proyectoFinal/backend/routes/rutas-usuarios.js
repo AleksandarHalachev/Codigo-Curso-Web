@@ -43,8 +43,6 @@ router.get("/:id", async (req, res, next) => {
   });
 });
 
-router.use(checkAuth);
-
 router.post("/", async (req, res, next) => {
   const { nombre, email, password } = req.body;
   let existeUsuario;
@@ -108,6 +106,8 @@ router.post("/", async (req, res, next) => {
   }
 });
 
+router.use(checkAuth);
+
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   let usuarioExiste;
@@ -156,5 +156,16 @@ router.post("/login", async (req, res, next) => {
     nombre: usuarioExiste.nombre,
     token: token,
   });
+});
+
+router.delete("/:id", async (req, res, next) => {
+  let usuarioBorrar;
+  try {
+    usuarioBorrar = await Usuario.findByIdAndDelete({ id: req.params.id });
+  } catch (err) {
+    const error = new Error("No se puede realizar la operación");
+    error.code = 500;
+    return next(error);
+  }
 });
 module.exports = router;
