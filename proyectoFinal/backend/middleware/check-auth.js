@@ -6,7 +6,7 @@ const autorizacion = (req, res, next) => {
     if (!token) {
       throw new Error("No se ha recibido el token");
     }
-    decodedTOKEN = jwt.verify(token, "clavetoken");
+    decodedTOKEN = jwt.verify(token, process.env.JWT_KEY);
     req.userData = {
       userID: decodedTOKEN.userId,
       nombre: decodedTOKEN.nombre,

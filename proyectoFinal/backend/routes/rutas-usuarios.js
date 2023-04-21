@@ -88,7 +88,7 @@ router.post("/", async (req, res, next) => {
           nombre: nuevoUsuario.nombre,
           email: nuevoUsuario.email,
         },
-        "clavetoken",
+        process.env.JWT_KEY,
         { expiresIn: "1h" }
       );
     } catch (error) {

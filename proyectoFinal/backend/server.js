@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 app.use(express.json());
 
@@ -15,10 +16,8 @@ app.use((req, res) => {
 });
 
 mongoose
-  .connect(
-    `mongodb+srv://alekbalek1:pass@clusterprueba.suxokql.mongodb.net/ToDo?retryWrites=true&w=majority`
-  )
+  .connect(process.env.MONGO_DB_URI)
   .then(() => {
-    app.listen(5000, () => console.log("Escuchando en puerto 5000"));
+    app.listen(process.env.PORT, () => console.log("Escuchando..."));
   })
   .catch((error) => console.log(error));
