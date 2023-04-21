@@ -158,17 +158,40 @@ router.post("/login", async (req, res, next) => {
   });
 });
 
+router.patch("/:id", async (req, res, next) => {
+  let usuarioModificar;
+  let idUsuario = req.params.id;
+  try {
+    usuarioModificar = await Usuario.findByIdAndUpdate(idUsuario, req.body, {
+      new: true,
+      runValidators: true,
+    });
+  } catch (err) {
+    res.status(404).json({
+      mensaje: "No se han podido actualizar los datos",
+      error: err.message,
+    });
+  }
+  res.status(200).json({
+    mensaje: "Datos de usuario modificados",
+    usuario: usuarioModificar,
+  });
+});
+
 router.delete("/:id", async (req, res, next) => {
   let usuarioBorrar;
   try {
-    usuarioBorrar = await Usuario.findByIdAndDelete({ id: req.params.id });
+    usuarioBorrar = await Usuario.findByIdAndDelete(req.params.id);
   } catch (err) {
-    const error = new Error("No se puede realizar la operación");
+    const error = new Error(
+      "Ha habido algún error. No se han podido eliminar los datos"
+    );
     error.code = 500;
     return next(error);
   }
   res.json({
     mensaje: "Usuario borrado",
+    usuario: usuarioBorrar,
   });
 });
 
