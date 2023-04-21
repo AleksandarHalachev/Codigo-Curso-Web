@@ -171,4 +171,5 @@ router.delete("/:id", async (req, res, next) => {
     mensaje: "Usuario borrado",
   });
 });
+
 module.exports = router;
