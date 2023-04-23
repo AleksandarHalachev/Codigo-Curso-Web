@@ -2,6 +2,7 @@ import React from "react";
 import "./FormularioLogin.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FormularioLogin = () => {
   const {
@@ -9,6 +10,8 @@ const FormularioLogin = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const navegar = useNavigate();
 
   const gestorFormulario = async (data) => {
     await axios
@@ -18,6 +21,11 @@ const FormularioLogin = () => {
       })
       .then((response) => {
         console.log("Todo correcto", response.data);
+        localStorage.setItem(
+          "datosUsuario",
+          JSON.stringify({ userId: data.id, token: data.token })
+        );
+        navegar();
       })
       .catch((error) => {
         console.log(error.response.data);
