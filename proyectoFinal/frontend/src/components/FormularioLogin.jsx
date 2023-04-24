@@ -22,8 +22,10 @@ const FormularioLogin = () => {
         email: data.email,
         password: data.password,
 
-        token:
-          "Bearer " + JSON.parse(localStorage.getItem("datosUsuario")).token,
+        headers: {
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("datosUsuario")).token,
+        },
       })
       .then((response) => {
         console.log("Todo correcto", response.data);
@@ -31,7 +33,7 @@ const FormularioLogin = () => {
         localStorage.setItem(
           "datosUsuario",
           JSON.stringify({
-            userId: response.data.userid,
+            userId: response.data.userId,
             token: response.data.token,
           })
         );
