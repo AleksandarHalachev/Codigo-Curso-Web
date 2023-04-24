@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import "./FormularioLogin.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -14,16 +14,26 @@ const FormularioLogin = () => {
   const navegar = useNavigate();
 
   const gestorFormulario = async (data) => {
+    console.log(JSON.parse(localStorage.getItem("datosUsuario")));
+    console.log(JSON.parse(localStorage.getItem("datosUsuario")).token);
+
     await axios
       .post(process.env.REACT_APP_BACKEND_URL + "/usuarios/login", {
         email: data.email,
         password: data.password,
+
+        token:
+          "Bearer " + JSON.parse(localStorage.getItem("datosUsuario")).token,
       })
       .then((response) => {
         console.log("Todo correcto", response.data);
+
         localStorage.setItem(
           "datosUsuario",
-          JSON.stringify({ userId: data.id, token: data.token })
+          JSON.stringify({
+            userId: response.data.userid,
+            token: response.data.token,
+          })
         );
         navegar();
       })

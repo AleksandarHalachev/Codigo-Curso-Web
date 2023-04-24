@@ -19,6 +19,13 @@ const FormularioReg = () => {
       })
       .then((response) => {
         console.log("Todo correcto", response.data);
+        localStorage.setItem(
+          "datosUsuario",
+          JSON.stringify({
+            userId: response.data.userid,
+            token: response.data.token,
+          })
+        );
       })
       .catch((error) => {
         console.log(error.response.data);
