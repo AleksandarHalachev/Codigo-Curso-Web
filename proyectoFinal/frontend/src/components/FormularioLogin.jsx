@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React } from "react";
 import "./FormularioLogin.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -18,15 +18,21 @@ const FormularioLogin = () => {
     console.log(JSON.parse(localStorage.getItem("datosUsuario")).token);
 
     await axios
-      .post(process.env.REACT_APP_BACKEND_URL + "/usuarios/login", {
-        email: data.email,
-        password: data.password,
-
-        headers: {
-          Authorization:
-            "Bearer " + JSON.parse(localStorage.getItem("datosUsuario")).token,
+      .post(
+        process.env.REACT_APP_BACKEND_URL + "/usuarios/login",
+        {
+          email: data.email,
+          password: data.password,
         },
-      })
+
+        {
+          headers: {
+            Authorization:
+              "Bearer " +
+              JSON.parse(localStorage.getItem("datosUsuario")).token,
+          },
+        }
+      )
       .then((response) => {
         console.log("Todo correcto", response.data);
 
@@ -37,7 +43,7 @@ const FormularioLogin = () => {
             token: response.data.token,
           })
         );
-        navegar();
+        navegar("/mistareas");
       })
       .catch((error) => {
         console.log(error.response.data);
