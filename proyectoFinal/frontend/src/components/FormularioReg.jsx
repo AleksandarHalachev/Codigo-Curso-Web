@@ -12,7 +12,7 @@ const FormularioReg = () => {
 
   const gestorFormulario = async (data) => {
     await axios
-      .post("http://localhost:5000/api/usuarios/", {
+      .post(process.env.REACT_APP_BACKEND_URL + "usuarios", {
         nombre: data.nombre,
         email: data.email,
         password: data.password,
