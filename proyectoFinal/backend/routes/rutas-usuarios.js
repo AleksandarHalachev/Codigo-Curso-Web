@@ -5,44 +5,6 @@ const jwt = require("jsonwebtoken");
 const checkAuth = require("../middleware/check-auth");
 const Usuario = require("../models/usuarios-model");
 
-router.get("/", async (req, res, next) => {
-  let usuarios;
-  try {
-    usuarios = await Usuario.find({}, "-password");
-  } catch (err) {
-    const error = new Error(
-      "Error. No se han podido recuperar los datos de los usuarios."
-    );
-    error.code = 500;
-    return next(error);
-  }
-  res.status(200).json({
-    mensaje: "Todos los usuarios:",
-    usuarios: usuarios,
-  });
-});
-
-router.get("/:id", async (req, res, next) => {
-  let usuario;
-  const idUsuario = req.params.id;
-  try {
-    usuario = await Usuario.findById(idUsuario);
-  } catch (err) {
-    const error = new Error("Error en la recuperación de datos");
-    error.code = 500;
-    return next(error);
-  }
-  if (!usuario) {
-    const error = new Error("No se ha encontrado el usuario");
-    error.code = 404;
-    return next(error);
-  }
-  res.status(200).json({
-    mensaje: "Usuario:",
-    usuario: usuario,
-  });
-});
-
 router.post("/", async (req, res, next) => {
   const { nombre, email, password } = req.body;
   let existeUsuario;
@@ -106,8 +68,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.use(checkAuth);
-
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
   let usuarioExiste;
@@ -141,7 +101,7 @@ router.post("/login", async (req, res, next) => {
         nombre: usuarioExiste.nombre,
         email: usuarioExiste.email,
       },
-      "clavetoken",
+      process.env.JWT_KEY,
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -155,6 +115,46 @@ router.post("/login", async (req, res, next) => {
     email: usuarioExiste.email,
     nombre: usuarioExiste.nombre,
     token: token,
+  });
+});
+
+router.use(checkAuth);
+
+router.get("/", async (req, res, next) => {
+  let usuarios;
+  try {
+    usuarios = await Usuario.find({}, "-password");
+  } catch (err) {
+    const error = new Error(
+      "Error. No se han podido recuperar los datos de los usuarios."
+    );
+    error.code = 500;
+    return next(error);
+  }
+  res.status(200).json({
+    mensaje: "Todos los usuarios:",
+    usuarios: usuarios,
+  });
+});
+
+router.get("/:id", async (req, res, next) => {
+  let usuario;
+  const idUsuario = req.params.id;
+  try {
+    usuario = await Usuario.findById(idUsuario);
+  } catch (err) {
+    const error = new Error("Error en la recuperación de datos");
+    error.code = 500;
+    return next(error);
+  }
+  if (!usuario) {
+    const error = new Error("No se ha encontrado el usuario");
+    error.code = 404;
+    return next(error);
+  }
+  res.status(200).json({
+    mensaje: "Usuario:",
+    usuario: usuario,
   });
 });
 
