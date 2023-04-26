@@ -13,6 +13,13 @@ const tareaSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  fechaCreacion: {
+    type: Date,
+    required: true,
+  },
+  fechaExpiracion: {
+    type: Date,
+  },
 });
 
 module.exports = mongoose.model("Tarea", tareaSchema);
