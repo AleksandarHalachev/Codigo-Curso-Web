@@ -15,6 +15,7 @@ const tareaSchema = new mongoose.Schema({
   },
   fechaCreacion: {
     type: Date,
+    default: Date.now,
     required: true,
   },
   fechaExpiracion: {

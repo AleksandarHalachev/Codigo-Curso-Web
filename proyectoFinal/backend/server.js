@@ -11,7 +11,7 @@ const rutasUsuarios = require("./routes/rutas-usuarios");
 app.use("/api/usuarios", rutasUsuarios);
 
 const rutasTareas = require("./routes/rutas-tareas");
-app.use("api/mistareas", rutasTareas);
+app.use("/api/mistareas", rutasTareas);
 
 app.use((req, res) => {
   res.status(404);
