@@ -77,7 +77,7 @@ router.get("/:id", async (req, res, next) => {
     return next(error);
   }
   if (!tarea) {
-    const error = new Error("No se ha encontrado la tarea");
+    const error = new Error("No se ha encontrado la tarea.");
     error.code = 404;
     return next(error);
   }
