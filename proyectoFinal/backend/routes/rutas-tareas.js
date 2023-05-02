@@ -81,7 +81,7 @@ router.get("/", async (req, res, next) => {
     return next(error);
   }
   res.status(200).json({
-    mensaje: "Todos los tareas:",
+    mensaje: "Todas las tareas:",
     tareas: tareas,
   });
 });
@@ -109,12 +109,11 @@ router.get("/:id", async (req, res, next) => {
 
 router.patch("/:id", async (req, res, next) => {
   let tareaModificar;
-  let idTarea = req.params.id;
   try {
-    tareaModificar = await Tarea.findByIdAndUpdate(idTarea, req.body, {
+    tareaModificar = await Tarea.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
-    });
+    }).populate("usuario");
   } catch (err) {
     res.status(404).json({
       mensaje: "No se han podido actualizar los datos",
@@ -130,7 +129,9 @@ router.patch("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   let tareaBorrar;
   try {
-    tareaBorrar = await Tarea.findByIdAndDelete(req.params.id);
+    tareaBorrar = await Tarea.findByIdAndDelete(req.params.id).populate(
+      "usuario"
+    );
   } catch (err) {
     const error = new Error(
       "Ha habido algún error. No se han podido eliminar los datos"
@@ -138,7 +139,7 @@ router.delete("/:id", async (req, res, next) => {
     error.code = 500;
     return next(error);
   }
-  if (!tarea) {
+  if (!tareaBorrar) {
     const error = new Error(
       "No se ha podido encontrar una tarea con el id proporcionado"
     );
@@ -146,8 +147,8 @@ router.delete("/:id", async (req, res, next) => {
     return next(error);
   }
   try {
-    tarea.usuario.tareas.pull(tarea);
-    await tarea.usuario.save();
+    tareaBorrar.usuario.tareas.pull(tareaBorrar);
+    await tareaBorrar.usuario.save();
   } catch (err) {
     const error = new Error(
       "Ha habido algún error. No se han podido eliminar los datos"

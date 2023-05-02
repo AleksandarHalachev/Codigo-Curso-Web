@@ -25,3 +25,4 @@ const tareaSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Tarea", tareaSchema);
+º;
