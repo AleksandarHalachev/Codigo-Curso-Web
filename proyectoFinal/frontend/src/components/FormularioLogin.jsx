@@ -14,25 +14,11 @@ const FormularioLogin = () => {
   const navegar = useNavigate();
 
   const gestorFormulario = async (data) => {
-    console.log(JSON.parse(localStorage.getItem("datosUsuario")));
-    console.log(JSON.parse(localStorage.getItem("datosUsuario")).token);
-
     await axios
-      .post(
-        process.env.REACT_APP_BACKEND_URL + "/usuarios/login",
-        {
-          email: data.email,
-          password: data.password,
-        },
-
-        {
-          headers: {
-            Authorization:
-              "Bearer " +
-              JSON.parse(localStorage.getItem("datosUsuario")).token,
-          },
-        }
-      )
+      .post(process.env.REACT_APP_BACKEND_URL + "/usuarios/login", {
+        email: data.email,
+        password: data.password,
+      })
       .then((response) => {
         console.log("Todo correcto", response.data);
 
