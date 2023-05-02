@@ -109,12 +109,11 @@ router.get("/:id", async (req, res, next) => {
 
 router.patch("/:id", async (req, res, next) => {
   let tareaModificar;
-  let idTarea = req.params.id;
   try {
-    tareaModificar = await Tarea.findByIdAndUpdate(idTarea, req.body, {
+    tareaModificar = await Tarea.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
-    });
+    }).populate("usuario");
   } catch (err) {
     res.status(404).json({
       mensaje: "No se han podido actualizar los datos",
