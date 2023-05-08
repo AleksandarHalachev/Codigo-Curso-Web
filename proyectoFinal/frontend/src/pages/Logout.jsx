@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Logout = () => {
+const Logout = ({ gestionarLogout }) => {
   const navegar = useNavigate();
   useEffect(() => {
     localStorage.removeItem("datosUsuario");
     navegar("/login");
-  }, [navegar]);
-  return <h1>Logged out...</h1>;
+  });
+  gestionarLogout();
+  return;
 };
 
 export default Logout;

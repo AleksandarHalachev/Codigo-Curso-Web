@@ -2,10 +2,10 @@ import React from "react";
 import FormularioLogin from "../components/FormularioLogin";
 import "./Login.css";
 
-const Login = () => {
+const Login = ({ gestionarLogin }) => {
   return (
     <div className="login">
-      <FormularioLogin />
+      <FormularioLogin gestionarLogin={gestionarLogin} />
     </div>
   );
 };

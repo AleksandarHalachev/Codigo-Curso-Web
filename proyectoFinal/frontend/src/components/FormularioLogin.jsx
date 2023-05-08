@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const FormularioLogin = () => {
+const FormularioLogin = ({ gestionarLogin }) => {
   const {
     register,
     handleSubmit,
@@ -21,7 +21,6 @@ const FormularioLogin = () => {
       })
       .then((response) => {
         console.log("Todo correcto", response.data);
-
         localStorage.setItem(
           "datosUsuario",
           JSON.stringify({
@@ -29,10 +28,12 @@ const FormularioLogin = () => {
             token: response.data.token,
           })
         );
+        gestionarLogin(response.data);
         navegar("/mistareas");
       })
       .catch((error) => {
-        console.log(error.response.data);
+        console.log(error);
+        console.log(process.env.REACT_APP_BACKEND_URL + "/usuarios/login");
       });
   };
 
