@@ -5,9 +5,10 @@ const Logout = ({ gestionarLogout }) => {
   const navegar = useNavigate();
   useEffect(() => {
     localStorage.removeItem("datosUsuario");
+    gestionarLogout();
     navegar("/login");
   });
-  gestionarLogout();
+
   return;
 };
 

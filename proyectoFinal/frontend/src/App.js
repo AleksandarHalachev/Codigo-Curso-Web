@@ -11,23 +11,23 @@ import Registro from "./pages/Registro";
 import Login from "./pages/Login";
 import Error from "./pages/Error";
 import Logout from "./pages/Logout";
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import Tareas from "./pages/Tareas";
+import ModificarTareas from "./pages/ModificarTareas";
+import BorrarTareas from "./pages/BorrarTareas";
+import VerTareas from "./pages/VerTareas";
 
 const App = () => {
   const [tieneAcceso, setTieneAcceso] = useState(false);
   const [datos, setDatos] = useState({});
-  const [datosLogout, setDatosLogout] = useState({});
 
   const gestionarLogin = (data) => {
     setDatos(data);
     setTieneAcceso(true);
-    console.log(tieneAcceso);
   };
 
   const gestionarLogout = () => {
     setTieneAcceso(false);
-    console.log(tieneAcceso);
   };
 
   return (
@@ -39,20 +39,20 @@ const App = () => {
               <NavLink className={"navlink"} to="/">
                 Inicio
               </NavLink>
-              <NavLink className={"navlink"} to="/login">
-                Login
-              </NavLink>
-              <NavLink className={"navlink"} to="/signup">
-                Crear Cuenta
-              </NavLink>
             </div>
           ) : (
             <div>
-              <NavLink className={"navlink"} to="/">
-                Inicio
+              <NavLink className={"navlink"} to="/añadirtareas">
+                Añadir Tareas
               </NavLink>
               <NavLink className={"navlink"} to="/mistareas">
-                Mis Tareas
+                Ver Tareas
+              </NavLink>
+              <NavLink className={"navlink"} to="/modificartareas">
+                Modificar Tareas
+              </NavLink>
+              <NavLink className={"navlink"} to="/borrartareas">
+                Borrar Tareas
               </NavLink>
               <NavLink className={"navlink"} to="/logout">
                 Logout
@@ -62,7 +62,10 @@ const App = () => {
         </div>
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/mistareas" element={<Tareas />} />
+          <Route path="/añadirtareas" element={<Tareas />} />
+          <Route path="/modificartareas" element={<ModificarTareas />} />
+          <Route path="/borrartareas" element={<BorrarTareas />} />
+          <Route path="/mistareas" element={<VerTareas />} />
           <Route
             path="/login"
             element={<Login gestionarLogin={gestionarLogin} />}
