@@ -14,7 +14,6 @@ import Logout from "./pages/Logout";
 import { React, useState } from "react";
 import Tareas from "./pages/Tareas";
 import ModificarTareas from "./pages/ModificarTareas";
-import BorrarTareas from "./pages/BorrarTareas";
 import VerTareas from "./pages/VerTareas";
 
 const App = () => {
@@ -51,9 +50,6 @@ const App = () => {
               <NavLink className={"navlink"} to="/modificartareas">
                 Modificar Tareas
               </NavLink>
-              <NavLink className={"navlink"} to="/borrartareas">
-                Borrar Tareas
-              </NavLink>
               <NavLink className={"navlink"} to="/logout">
                 Logout
               </NavLink>
@@ -64,7 +60,6 @@ const App = () => {
           <Route path="/" element={<Inicio />} />
           <Route path="/añadirtareas" element={<Tareas />} />
           <Route path="/modificartareas" element={<ModificarTareas />} />
-          <Route path="/borrartareas" element={<BorrarTareas />} />
           <Route path="/mistareas" element={<VerTareas />} />
           <Route
             path="/login"
