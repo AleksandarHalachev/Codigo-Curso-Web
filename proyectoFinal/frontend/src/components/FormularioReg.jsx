@@ -2,6 +2,7 @@ import React from "react";
 import "./FormularioReg.css";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FormularioReg = () => {
   const {
@@ -9,6 +10,7 @@ const FormularioReg = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const navegar = useNavigate();
 
   const gestorFormulario = async (data) => {
     await axios
@@ -26,6 +28,7 @@ const FormularioReg = () => {
             token: response.data.token,
           })
         );
+        navegar("/login");
       })
       .catch((error) => {
         console.log(error.response.data);

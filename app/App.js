@@ -1,4 +1,4 @@
-import "./App.css";
+import { React, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,24 +6,28 @@ import {
   Navigate,
   NavLink,
 } from "react-router-dom";
+import "./App.css";
 import Inicio from "./pages/Inicio";
-import Registro from "./pages/Registro";
-import Login from "./pages/Login";
 import Error from "./pages/Error";
+import Docentes from "./pages/Docentes";
+import Cursos from "./pages/Cursos";
+import Login from "./pages/Login";
 import Logout from "./pages/Logout";
-import { React, useState } from "react";
-import Tareas from "./pages/Tareas";
-import ModificarTareas from "./pages/ModificarTareas";
-import BorrarTareas from "./pages/BorrarTareas";
-import VerTareas from "./pages/VerTareas";
+import Alta from "./pages/Alta";
 
 const App = () => {
   const [tieneAcceso, setTieneAcceso] = useState(false);
   const [datos, setDatos] = useState({});
+  const [datosLogout, setDatosLogout] = useState({});
+  const [token, setToken] = useState();
 
-  const gestionarLogin = (data) => {
-    setDatos(data);
+  // Traemos desde el componente Auth los datos del usuario enviados desde el servidor mediane esta función prop
+  const gestionarLogin = (dato) => {
+    setDatos(dato); // datos del usuario: email, password y token
     setTieneAcceso(true);
+    // La variable que indica que está logueado se pone a true
+    setToken(dato.token);
+    console.log(tieneAcceso);
   };
 
   const gestionarLogout = () => {
@@ -39,20 +43,23 @@ const App = () => {
               <NavLink className={"navlink"} to="/">
                 Inicio
               </NavLink>
+              <NavLink className={"navlink"} to="/login">
+                Login
+              </NavLink>
+              <NavLink className={"navlink"} to="/signup">
+                Crear Cuenta
+              </NavLink>
             </div>
           ) : (
             <div>
-              <NavLink className={"navlink"} to="/añadirtareas">
-                Añadir Tareas
+              <NavLink className={"navlink"} to="/">
+                Inicio
               </NavLink>
-              <NavLink className={"navlink"} to="/mistareas">
-                Ver Tareas
+              <NavLink className={"navlink"} to="/docentes">
+                Docentes
               </NavLink>
-              <NavLink className={"navlink"} to="/modificartareas">
-                Modificar Tareas
-              </NavLink>
-              <NavLink className={"navlink"} to="/borrartareas">
-                Borrar Tareas
+              <NavLink className={"navlink"} to="/cursos">
+                Cursos
               </NavLink>
               <NavLink className={"navlink"} to="/logout">
                 Logout
@@ -62,10 +69,8 @@ const App = () => {
         </div>
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/añadirtareas" element={<Tareas />} />
-          <Route path="/modificartareas" element={<ModificarTareas />} />
-          <Route path="/borrartareas" element={<BorrarTareas />} />
-          <Route path="/mistareas" element={<VerTareas />} />
+          <Route path="/cursos" element={<Cursos />} />
+          <Route path="/docentes" element={<Docentes />} />
           <Route
             path="/login"
             element={<Login gestionarLogin={gestionarLogin} />}
@@ -75,7 +80,7 @@ const App = () => {
             path="/logout"
             element={<Logout gestionarLogout={gestionarLogout} />}
           />
-          <Route path="/signup" element={<Registro />} />
+          <Route path="/signup" element={<Alta />} />
           <Route path="/404" element={<Error />} />
           <Route path="*" element={<Navigate to="/404" replace />} />
         </Routes>
