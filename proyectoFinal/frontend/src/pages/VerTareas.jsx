@@ -1,39 +1,52 @@
-import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import "./VerTareas.css";
 
-const VerTareas = ({ userId }) => {
+const VerTareas = () => {
   const [tareas, setTareas] = useState([]);
+  const [usuario, setUsuario] = useState([]);
+
+  const extraerDatosDeUsuario = () => {
+    const datosRecuperar = JSON.parse(localStorage.getItem("datosUsuario"));
+    if (datosRecuperar && datosRecuperar.userId) {
+      setUsuario(datosRecuperar.userId);
+      return datosRecuperar.token;
+    }
+  };
 
   useEffect(() => {
     const obtenerTareas = async () => {
-      try {
-        const response = await axios.get(`/mistareas/usuario/${userId}`);
-        setTareas(response.data.tareas);
-      } catch (error) {
-        console.log(error);
+      const token = extraerDatosDeUsuario();
+      if (token) {
+        try {
+          const response = await axios.get(
+            process.env.REACT_APP_BACKEND_URL + `/mistareas/usuario/${usuario}`,
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+          setTareas(response.data.tareas);
+          console.log(response.data.tareas);
+        } catch (error) {
+          console.error(error);
+        }
       }
     };
     obtenerTareas();
-  }, [userId]);
+  }, [usuario]);
 
   return (
-    <div>
-      <h2>Todas las tareas del usuario:</h2>
-      {tareas.length > 0 ? (
-        <ul>
-          {tareas.map((tarea) => (
-            <li key={tarea._id}>
-              <h3>{tarea.titulo}</h3>
-              <p>{tarea.descripcion}</p>
-              <p>Categoría: {tarea.categoria}</p>
-              <p>Fecha de creación: {tarea.fechaCreacion}</p>
-              <p>Fecha de expiración: {tarea.fechaExpiracion}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No hay tareas para mostrar</p>
-      )}
+    <div className="ver-tareas-container">
+      <h1>Tareas del usuario</h1>
+      <ul>
+        {tareas.map((tarea) => (
+          <li className="tarea">
+            <h1>Título: {tarea.titulo}</h1>
+            <p>Descripción: {tarea.descripcion}</p>
+            <p>Categoría: {tarea.categoria}</p>
+            <p>Creada: {tarea.fechaCreacion}</p>
+            <p>Expira: {tarea.fechaExpiracion}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
