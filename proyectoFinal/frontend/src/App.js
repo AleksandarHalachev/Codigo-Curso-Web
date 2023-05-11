@@ -47,9 +47,6 @@ const App = () => {
               <NavLink className={"navlink"} to="/mistareas">
                 Ver Tareas
               </NavLink>
-              <NavLink className={"navlink"} to="/modificartareas">
-                Modificar Tareas
-              </NavLink>
               <NavLink className={"navlink"} to="/logout">
                 Logout
               </NavLink>
@@ -59,7 +56,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/añadirtareas" element={<Tareas />} />
-          <Route path="/modificartareas" element={<ModificarTareas />} />
+          <Route path="/modificartareas/:id" element={<ModificarTareas />} />
           <Route path="/mistareas" element={<VerTareas />} />
           <Route
             path="/login"

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./VerTareas.css";
 
 const VerTareas = () => {
@@ -60,6 +61,9 @@ const VerTareas = () => {
             <button onClick={() => eliminarTarea(tarea._id)}>
               Eliminar tarea
             </button>
+            <Link to={`/modificartareas/${tarea._id}`}>
+              <button>Modificar tarea</button>
+            </Link>
           </li>
         ))}
       </ul>
